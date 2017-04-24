@@ -20,10 +20,10 @@ public class VendorServiceBean implements VendorService {
 	}
 
 	@Override
-	public Vendor createVendor(String name, String plz) {
+	public Vendor createVendor(String name, String zip) {
 		Vendor newVendor = new Vendor();
 		newVendor.setName(name);
-		newVendor.setPlz(plz);
+		newVendor.setZip(zip);
 		return createVendor(newVendor);
 	}
 

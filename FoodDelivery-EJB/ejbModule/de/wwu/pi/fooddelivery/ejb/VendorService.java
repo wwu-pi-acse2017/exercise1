@@ -22,10 +22,11 @@ public interface VendorService {
 	/**
 	 * Create a new vendor in the database with the specified property values.
 	 * @param name The name of the vendor.
+	 * @param zip The zipCode of the vendor.
 	 * @return The newly created vendor.
 	 * @throws ConstraintViolationException (wrapped in an {@link EJBException})
 	 */
-	Vendor createVendor(String name, String plz);
+	Vendor createVendor(String name, String zip);
 	
 	/**
 	 * Returns the vendor with the specified ID.

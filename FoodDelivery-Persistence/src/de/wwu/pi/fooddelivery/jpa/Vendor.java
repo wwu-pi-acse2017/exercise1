@@ -20,9 +20,9 @@ public class Vendor implements java.io.Serializable {
 	@Size(min=1, message="Name required")
 	protected String name;
 	
-	@Pattern(regexp="[0-9]*",message="PLZ - illegal character (only digits allowed)")
-	@Size(min=5, max=5, message="PLZ must have 5 digits")
-	protected String plz;
+	@Pattern(regexp="[0-9]*",message="Zip code - illegal character (only digits allowed)")
+	@Size(min=5, max=5, message="Zip code must have 5 digits")
+	protected String zip;
 
 	public int getVendorId() {
 		return vendorId;
@@ -40,16 +40,16 @@ public class Vendor implements java.io.Serializable {
 		this.name = name;
 	}
 
-	public String getPlz() {
-		return plz;
+	public String getZip() {
+		return zip;
 	}
 
-	public void setPlz(String plz) {
-		this.plz = plz;
+	public void setZip(String zip) {
+		this.zip = zip;
 	}
 	
 	@Override
 	public String toString() {
-		return "Vendor " + name + " [vendorId=" + vendorId + ", plz=" + plz + "]";
+		return "Vendor " + name + " [vendorId=" + vendorId + ", zip=" + zip + "]";
 	}
 }
