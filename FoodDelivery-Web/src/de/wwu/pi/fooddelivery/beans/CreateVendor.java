@@ -22,7 +22,7 @@ public class CreateVendor {
 	private String errorMessage;
 
 	@EJB
-	private VendorService vendorService;
+	private VendorService vendorEjb;
 
 	public Vendor getVendor() {
 		if (vendor == null)
@@ -33,7 +33,7 @@ public class CreateVendor {
 	public String persist() {
 		// Action
 		try {
-			lastVendor = vendorService.createVendor(getVendor());
+			lastVendor = vendorEjb.createVendor(getVendor());
 			vendor = null;
 			errorMessage = null;
 		} catch (EJBException e) {
