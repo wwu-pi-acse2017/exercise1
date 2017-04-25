@@ -14,16 +14,30 @@ public class Util {
 	public static String getConstraintMessage(EJBException e) {
 		String message = "";
 		if(e.getCausedByException() instanceof ConstraintViolationException){
-			ConstraintViolationException cve = (ConstraintViolationException) e.getCausedByException();
-			Set<ConstraintViolation<?>> violations = cve.getConstraintViolations();
-			if(violations != null)
-				for(ConstraintViolation<?> cur : violations)
-					message += cur.getMessage() + " ";
-			else
-				message += cve.getMessage();
+			message += getConstraintMessage((ConstraintViolationException) e.getCausedByException());
 		}
 		else
 			message += e.getMessage();
+		return message;
+	}
+	
+	public static String getConstraintMessage(ConstraintViolationException cve) {
+		String message = "";
+		
+		message += constructViolationMessage(cve.getConstraintViolations());
+		if(message.length() == 0) {
+			message += cve.getMessage();
+		}
+		return message;
+	}
+	
+	public static String constructViolationMessage(Set<ConstraintViolation<?>> violations) {
+		String message = "";
+		if (violations != null) {
+			for (ConstraintViolation<?> cur : violations) {
+				message += cur.getMessage() + " ";
+			}
+		}
 		return message;
 	}
 

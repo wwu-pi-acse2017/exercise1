@@ -1,10 +1,16 @@
 package de.wwu.pi.fooddelivery.ejb;
 
 import java.util.Collection;
+import java.util.Set;
 
+import javax.annotation.Resource;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
+import javax.validation.ConstraintViolation;
+import javax.validation.ConstraintViolationException;
+import javax.validation.Validator;
+import javax.validation.ValidatorFactory;
 
 import de.wwu.pi.fooddelivery.jpa.User;
 
@@ -12,6 +18,12 @@ import de.wwu.pi.fooddelivery.jpa.User;
 public class UserServiceBean implements UserService {
 	@PersistenceContext
 	private EntityManager em;
+	
+	@Resource
+    private ValidatorFactory validatorFactory;
+
+    @Resource
+    private Validator validator;
 
 	@Override
 	public User createUser(User user) {
@@ -39,6 +51,13 @@ public class UserServiceBean implements UserService {
 	@Override
 	public Collection<User> getAllUsers() {
 		return em.createQuery("FROM User", User.class).getResultList();
+	}
+
+	@Override
+	public void validate(User user) throws ConstraintViolationException {
+		Set<ConstraintViolation<User>> violations = validator.validate(user);
+		if(!violations.isEmpty()) throw
+			new ConstraintViolationException(violations);
 	}
 
 }

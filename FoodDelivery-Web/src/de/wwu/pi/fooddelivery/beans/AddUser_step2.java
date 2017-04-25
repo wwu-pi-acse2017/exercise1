@@ -6,7 +6,7 @@ import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ManagedProperty;
 import javax.faces.bean.SessionScoped;
 
-import de.wwu.pi.fooddelivery.ejb.ProcessAddUser;
+import de.wwu.pi.fooddelivery.ejb.UserService;
 import de.wwu.pi.fooddelivery.jpa.User;
 import de.wwu.pi.fooddelivery.web.Util;
 
@@ -23,7 +23,7 @@ public class AddUser_step2 {
 	private String errorMessage;
 
 	@EJB
-	private ProcessAddUser processEjb;
+	private UserService userEjb;
 
 	public User getUser() {
 //		if (user == null)
@@ -35,7 +35,7 @@ public class AddUser_step2 {
 	public String submit() {
 		// Action
 		try {
-			processEjb.step2_add_Address(getUser());
+			userEjb.createUser(getUser());
 			errorMessage = null;
 		} catch (EJBException e) {
 			errorMessage = "User not created: " + Util.getConstraintMessage(e);
@@ -43,10 +43,10 @@ public class AddUser_step2 {
 
 		// Navigation
 		if (errorMessage != null)
-			
-			// TODO cleanup
 			return null;
 		else
+			// TODO cleanup
+			
 			return "listUsers";
 	}
 

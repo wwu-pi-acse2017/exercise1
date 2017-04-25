@@ -1,9 +1,11 @@
 package de.wwu.pi.fooddelivery.ejb;
 
 import java.util.Collection;
+import java.util.Set;
 
 import javax.ejb.EJBException;
 import javax.ejb.Remote;
+import javax.validation.ConstraintViolation;
 import javax.validation.ConstraintViolationException;
 
 import de.wwu.pi.fooddelivery.jpa.User;
@@ -41,4 +43,6 @@ public interface UserService {
 	 * @return All users.
 	 */
 	Collection<User> getAllUsers();
+	
+	void validate(User user) throws ConstraintViolationException;
 }

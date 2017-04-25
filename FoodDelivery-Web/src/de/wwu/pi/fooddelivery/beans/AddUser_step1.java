@@ -1,12 +1,16 @@
 package de.wwu.pi.fooddelivery.beans;
 
+import java.util.Set;
+
 import javax.ejb.EJB;
 import javax.ejb.EJBException;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ManagedProperty;
 import javax.faces.bean.SessionScoped;
+import javax.validation.ConstraintViolation;
+import javax.validation.ConstraintViolationException;
 
-import de.wwu.pi.fooddelivery.ejb.ProcessAddUser;
+import de.wwu.pi.fooddelivery.ejb.UserService;
 import de.wwu.pi.fooddelivery.jpa.User;
 import de.wwu.pi.fooddelivery.web.Util;
 
@@ -22,9 +26,9 @@ public class AddUser_step1 {
 	private ProcessBean processBean;
 	//private User user;
 	private String errorMessage;
-
+	
 	@EJB
-	private ProcessAddUser processEjb;
+	private UserService userEjb; 
 
 	public User getUser() {
 //		if (user == null)
@@ -36,9 +40,11 @@ public class AddUser_step1 {
 	public String submit() {
 		// Action
 		try {
-			processEjb.step1_create_User(processBean.getUser());
+			userEjb.validate(getUser());
 			errorMessage = null;
 		} catch (EJBException e) {
+			errorMessage = "User not created: " + Util.getConstraintMessage(e);
+		} catch (ConstraintViolationException e) {
 			errorMessage = "User not created: " + Util.getConstraintMessage(e);
 		}
 

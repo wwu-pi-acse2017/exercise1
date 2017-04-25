@@ -15,8 +15,8 @@ public class User implements java.io.Serializable {
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	protected int userId;
 	
-	//@NotNull(message="Firstname required")
-	//@Size(min=1, message="Firstname required")
+	@NotNull(message="Firstname required")
+	@Size(min=1, message="Firstname required")
 	protected String firstName;
 	
 	//@NotNull(message="Lastname required")
