@@ -35,4 +35,11 @@ public interface ProductService {
 	 * @throws IllegalArgumentException If no product exists for the given ID.
 	 */
 	Collection<Product> getProductsOfVendor(Vendor vendor);
+	
+	/**
+	 * Validate the product entity.
+	 * @param product
+	 * @throws ConstraintViolationException
+	 */
+	void validate(Product product) throws ConstraintViolationException;
 }

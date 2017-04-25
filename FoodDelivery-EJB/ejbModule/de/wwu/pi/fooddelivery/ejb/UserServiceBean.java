@@ -12,6 +12,7 @@ import javax.validation.ConstraintViolationException;
 import javax.validation.Validator;
 import javax.validation.ValidatorFactory;
 
+import de.wwu.pi.fooddelivery.jpa.Address;
 import de.wwu.pi.fooddelivery.jpa.User;
 
 @Stateless
@@ -59,5 +60,11 @@ public class UserServiceBean implements UserService {
 		if(!violations.isEmpty()) throw
 			new ConstraintViolationException(violations);
 	}
-
+	
+	@Override
+	public void validate(Address address) throws ConstraintViolationException {
+		Set<ConstraintViolation<Address>> violations = validator.validate(address);
+		if(!violations.isEmpty()) throw
+			new ConstraintViolationException(violations);
+	}
 }
