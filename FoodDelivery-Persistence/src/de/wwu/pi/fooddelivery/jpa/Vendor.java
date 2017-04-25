@@ -50,6 +50,6 @@ public class Vendor implements java.io.Serializable {
 	
 	@Override
 	public String toString() {
-		return "Vendor " + name + " [vendorId=" + vendorId + ", zip=" + zip + "]";
+		return name + " [vendorId=" + vendorId + ", zip=" + zip + "]";
 	}
 }
