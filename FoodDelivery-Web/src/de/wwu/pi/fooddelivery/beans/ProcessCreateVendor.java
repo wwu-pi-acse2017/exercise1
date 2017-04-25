@@ -4,6 +4,7 @@ import javax.ejb.EJB;
 import javax.ejb.EJBException;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ViewScoped;
+import javax.validation.ConstraintViolationException;
 
 import de.wwu.pi.fooddelivery.ejb.VendorService;
 import de.wwu.pi.fooddelivery.jpa.Vendor;
@@ -15,10 +16,9 @@ import de.wwu.pi.fooddelivery.web.Util;
 
 @ManagedBean
 @ViewScoped
-public class CreateVendor {
+public class ProcessCreateVendor {
 	private Vendor vendor;
 	private Vendor lastVendor;
-	// private boolean batch;
 	private String errorMessage;
 
 	@EJB
@@ -30,13 +30,17 @@ public class CreateVendor {
 		return vendor;
 	}
 
-	public String persist() {
+	public String submit() {
 		// Action
 		try {
+			vendorEjb.validate(getVendor());
 			lastVendor = vendorEjb.createVendor(getVendor());
+			
 			vendor = null;
 			errorMessage = null;
 		} catch (EJBException e) {
+			errorMessage = "Vendor not created: " + Util.getConstraintMessage(e);
+		} catch (ConstraintViolationException e) {
 			errorMessage = "Vendor not created: " + Util.getConstraintMessage(e);
 		}
 

@@ -4,17 +4,17 @@
 	xmlns:ui="http://java.sun.com/jsf/facelets"
 	xmlns:f="http://java.sun.com/jsf/core">
 <ui:composition template="/resources/master.xhtml">
-	<ui:define name="title">New user (1)</ui:define>
+	<ui:define name="title">Enter user details</ui:define>
 	<ui:define name="content">
 	<div class="inputForm"><h:form>
 		<h:panelGrid columns="3" columnClasses="form-label,form-input,form-message error" footerClass="form-footer">
 			<h:outputLabel value="First Name" for="firstName" />
-			<h:inputText id="firstName" value="#{addUser_step1.user.firstName}"/>
+			<h:inputText id="firstName" value="#{processAddUser.user.firstName}"/>
 			<h:message for="firstName"/>
-			<f:facet name="footer"><h:commandButton value="Submit" action="#{addUser_step1.submit}" /></f:facet>
+			<f:facet name="footer"><h:commandButton value="Submit" action="#{processAddUser.submit_create_user}" /></f:facet>
 		</h:panelGrid>
 	</h:form></div>
-	<div class="result"><h:outputText rendered="#{not empty addUser_step1.error}" styleClass="error" value="#{addUser_step1.error}" /></div>
+	<div class="result"><h:outputText rendered="#{not empty processAddUser.error}" styleClass="error" value="#{processAddUser.error}" /></div>
 	</ui:define>
 </ui:composition>
 </html>

@@ -1,9 +1,11 @@
 package de.wwu.pi.fooddelivery.jpa;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToOne;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
@@ -22,6 +24,20 @@ public class User implements java.io.Serializable {
 	//@NotNull(message="Lastname required")
 	//@Size(min=1, message="Lastname required")
 	protected String lastName;
+	
+	//TODO Date
+	protected String birthDate;
+
+	@NotNull(message="IBAN required")
+	@Size(min=15, max=34, message="IBAN required")
+	protected String iban;
+	
+	@NotNull(message="BIC required")
+	@Size(min=8, max=11, message="BIC required")
+	protected String bic;
+	
+	@OneToOne(cascade=CascadeType.ALL)
+	protected Address address;
 
 	public int getUserId() {
 		return userId;
@@ -45,5 +61,37 @@ public class User implements java.io.Serializable {
 
 	public void setLastName(String lastName) {
 		this.lastName = lastName;
+	}
+	
+	public String getIban() {
+		return iban;
+	}
+
+	public void setIban(String iban) {
+		this.iban = iban;
+	}
+
+	public String getBic() {
+		return bic;
+	}
+
+	public void setBic(String bic) {
+		this.bic = bic;
+	}
+	
+	public Address getAddress() {
+		return address;
+	}
+
+	public void setAddress(Address address) {
+		this.address = address;
+	}
+	
+	public String getBirthDate() {
+		return birthDate;
+	}
+
+	public void setBirthDate(String birthDate) {
+		this.birthDate = birthDate;
 	}
 }
