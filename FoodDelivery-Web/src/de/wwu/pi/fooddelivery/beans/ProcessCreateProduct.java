@@ -49,14 +49,15 @@ public class ProcessCreateProduct {
 		// Action
 		try {
 			Vendor vendor = vendorEjb.getVendor(vendorId);
-			
 			vendor.addProduct(getProduct());
+			
+			productEjb.createProduct(product);
 			
 			reset();
 		} catch (EJBException e) {
-			errorMessage = "Vendor not created: " + Util.getConstraintMessage(e);
+			errorMessage = "Product not created: " + Util.getConstraintMessage(e);
 		} catch (ConstraintViolationException e) {
-			errorMessage = "Vendor not created: " + Util.getConstraintMessage(e);
+			errorMessage = "Product not created: " + Util.getConstraintMessage(e);
 		}
 		
 		// Navigation
