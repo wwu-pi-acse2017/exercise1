@@ -50,11 +50,6 @@ public class VendorPage {
 	}
 	
 	public Collection<Product> getProducts(){
-		return productEjb.getProductsOfVendor(getVendor());
+		return getVendor().getProducts();
 	}
-	
-	public void addProduct(){
-		productEjb.createProduct(getVendor());
-	}
-	
 }

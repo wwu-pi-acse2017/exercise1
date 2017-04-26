@@ -1,24 +1,21 @@
 package de.wwu.pi.fooddelivery.ejb;
 
-import java.util.Collection;
-
 import javax.ejb.EJBException;
 import javax.ejb.Remote;
 import javax.validation.ConstraintViolationException;
 
 import de.wwu.pi.fooddelivery.jpa.Product;
-import de.wwu.pi.fooddelivery.jpa.Vendor;
 
 @Remote
 public interface ProductService {
 
 	/**
-	 * Create a new product in the database related to the specified <code>vendor</code>.
-	 * @param vendor The vendor to which a product should be created.
+	 * Create a new product in the database related to the specified <code>product</code>.
+	 * @param vendor The product that should be created.
 	 * @return The newly created product.
 	 * @throws ConstraintViolationException (wrapped in an {@link EJBException})
 	 */
-	Product createProduct(Vendor vendor);
+	Product createProduct(Product product);
 	
 	/**
 	 * Returns the product with the specified ID.
@@ -29,10 +26,9 @@ public interface ProductService {
 	Product getProduct(int productId);
 	
 	/**
-	 * Returns the collection of products that are related to a specified vendor.
-	 * @param vendor The vendor to which the products are retrieved.
-	 * @return The collection of products.
-	 * @throws IllegalArgumentException If no product exists for the given ID.
+	 * Validate the product entity.
+	 * @param product
+	 * @throws ConstraintViolationException
 	 */
-	Collection<Product> getProductsOfVendor(Vendor vendor);
+	void validate(Product product) throws ConstraintViolationException;
 }

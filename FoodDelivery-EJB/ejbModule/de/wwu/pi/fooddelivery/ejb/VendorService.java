@@ -41,4 +41,11 @@ public interface VendorService {
 	 * @return All vendors.
 	 */
 	Collection<Vendor> getAllVendors();
+	
+	/**
+	 * Validate the vendor entity.
+	 * @param vendor
+	 * @throws ConstraintViolationException
+	 */
+	void validate(Vendor vendor) throws ConstraintViolationException;
 }
