@@ -31,6 +31,16 @@ public class ProcessCreateProduct {
 	@EJB
 	private ProductService productEjb;
 
+	public void ensureInitialized() {
+		try{
+			if(vendorEjb.getVendor(vendorId) != null)
+				return; // Success
+		} catch(EJBException e) {
+			e.printStackTrace();
+		}
+		Util.redirectToRoot();
+	}
+	
 	public Product getProduct() {
 		if (product == null)
 			product = new Product();
@@ -68,5 +78,13 @@ public class ProcessCreateProduct {
 	
 	public String getError() {
 		return errorMessage != null ? errorMessage : "";
+	}
+	
+	public int getVendorId() {
+		return vendorId;
+	}
+
+	public void setVendorId(int vendorId) {
+		this.vendorId = vendorId;
 	}
 }

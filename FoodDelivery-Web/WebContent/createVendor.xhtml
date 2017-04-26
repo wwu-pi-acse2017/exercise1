@@ -11,9 +11,9 @@
 			<h:outputLabel value="Name" for="name" />
 			<h:inputText id="name" value="#{processCreateVendor.vendor.name}"/>
 			<h:message for="name"/>
-			<h:outputLabel value="PLZ" for="plz" />
-			<h:inputText id="plz" value="#{processCreateVendor.vendor.plz}" />
-			<h:message for="plz"/>
+			<h:outputLabel value="Zip code" for="zip" />
+			<h:inputText id="zip" value="#{processCreateVendor.vendor.zip}" />
+			<h:message for="zip"/>
 			<f:facet name="footer"><h:commandButton value="Submit" action="#{processCreateVendor.submit}" />
 			<h:commandButton value="Cancel" action="#{processCreateVendor.cancel}" /></f:facet>
 		</h:panelGrid>

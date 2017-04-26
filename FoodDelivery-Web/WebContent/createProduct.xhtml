@@ -7,7 +7,7 @@
 	<ui:define name="metadata">
 	<f:metadata>
 		<f:viewParam name="id" value="#{processCreateProduct.vendorId}" />
-		<f:event type="preRenderView" listener="#{processCreateProduct.ensureInitialized}" />
+		<f:viewAction action="#{processCreateProduct.ensureInitialized}" />
 	</f:metadata>
 	</ui:define>
 	<ui:define name="title">New product</ui:define>

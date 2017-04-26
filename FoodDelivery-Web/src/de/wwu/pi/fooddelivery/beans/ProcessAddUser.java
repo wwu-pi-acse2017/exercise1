@@ -1,13 +1,9 @@
 package de.wwu.pi.fooddelivery.beans;
 
-import java.util.Set;
-
 import javax.ejb.EJB;
 import javax.ejb.EJBException;
 import javax.faces.bean.ManagedBean;
-import javax.faces.bean.ManagedProperty;
 import javax.faces.bean.SessionScoped;
-import javax.validation.ConstraintViolation;
 import javax.validation.ConstraintViolationException;
 
 import de.wwu.pi.fooddelivery.ejb.UserService;
