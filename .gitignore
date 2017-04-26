@@ -1,11 +1,7 @@
 .class
-.settings/
 .metadata/
 
 # Package Files #
 *.jar
 *.war
 *.ear
-
-# Keep EAR project setting
-!/FoodDelivery/.settings/
