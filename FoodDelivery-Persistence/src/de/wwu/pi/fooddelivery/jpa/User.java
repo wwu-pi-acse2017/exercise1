@@ -21,11 +21,12 @@ public class User implements java.io.Serializable {
 	@Size(min=1, message="Firstname required")
 	protected String firstName;
 	
-	//@NotNull(message="Lastname required")
-	//@Size(min=1, message="Lastname required")
+	@NotNull(message="Lastname required")
+	@Size(min=1, message="Lastname required")
 	protected String lastName;
 	
 	//TODO Date
+	@NotNull
 	protected String birthDate;
 
 	@NotNull(message="IBAN required")

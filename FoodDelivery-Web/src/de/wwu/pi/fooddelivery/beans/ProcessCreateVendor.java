@@ -31,7 +31,7 @@ public class ProcessCreateVendor {
 
 	public String submit() {
 		// Action
-		try {
+		try {System.out.println("Submit");
 			vendorEjb.validate(getVendor());
 			vendorEjb.createVendor(getVendor());
 			
@@ -50,10 +50,10 @@ public class ProcessCreateVendor {
 			return "listVendors";
 	}
 	
-	public String cancel() {
+	public void cancel() {
 		vendor = null;
-		
-		return "index";
+		System.out.println("cancel");
+		Util.redirectToRoot();
 	}
 	
 	public String getError() {

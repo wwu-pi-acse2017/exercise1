@@ -8,12 +8,21 @@
 	<ui:define name="content">
 	<div class="inputForm"><h:form>
 		<h:panelGrid columns="3" columnClasses="form-label,form-input,form-message error" footerClass="form-footer">
-			<h:outputLabel value="First Name" for="firstName" />
-			<h:inputText id="firstName" value="#{processAddUser.user.firstName}"/>
-			<h:message for="firstName"/>
-			<h:outputLabel value="Last Name" for="lastName" />
-			<h:inputText id="lastName" value="#{processAddUser.user.lastName}"/>
-			<h:message for="lastName"/>
+			<h:outputLabel value="Street" for="street" />
+			<h:inputText id="street" value="#{processAddUser.address.street}"/>
+			<h:message for="street"/>
+			<h:outputLabel value="Street number" for="streetNo" />
+			<h:inputText id="streetNo" value="#{processAddUser.address.streetNo}"/>
+			<h:message for="streetNo"/>
+			<h:outputLabel value="Zip code" for="zip" />
+			<h:inputText id="zip" value="#{processAddUser.address.zip}"/>
+			<h:message for="zip"/>
+			<h:outputLabel value="City" for="city" />
+			<h:inputText id="city" value="#{processAddUser.address.city}"/>
+			<h:message for="city"/>
+			<h:outputLabel value="Additional location information" for="additionalLocationInformation" />
+			<h:inputText id="additionalLocationInformation" value="#{processAddUser.address.additionalLocationInformation}"/>
+			<h:message for="additionalLocationInformation"/>
 			<f:facet name="footer"><h:commandButton value="Submit" action="#{processAddUser.submit_create_address}" />
 			<h:commandButton value="Cancel" action="#{processAddUser.cancel}" /></f:facet>
 		</h:panelGrid>

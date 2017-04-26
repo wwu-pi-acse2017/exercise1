@@ -11,6 +11,18 @@
 			<h:outputLabel value="First Name" for="firstName" />
 			<h:inputText id="firstName" value="#{processAddUser.user.firstName}"/>
 			<h:message for="firstName"/>
+			<h:outputLabel value="Last Name" for="lastName" />
+			<h:inputText id="lastName" value="#{processAddUser.user.lastName}"/>
+			<h:message for="lastName"/>
+			<h:outputLabel value="Birth date" for="birthDate" />
+			<h:inputText id="birthDate" value="#{processAddUser.user.birthDate}"/>
+			<h:message for="birthDate"/>
+			<h:outputLabel value="IBAN" for="iban" />
+			<h:inputText id="iban" value="#{processAddUser.user.iban}"/>
+			<h:message for="iban"/>
+			<h:outputLabel value="BIC" for="bic" />
+			<h:inputText id="bic" value="#{processAddUser.user.bic}"/>
+			<h:message for="bic"/>
 			<f:facet name="footer"><h:commandButton value="Submit" action="#{processAddUser.submit_create_user}" />
 			<h:commandButton value="Cancel" action="#{processAddUser.cancel}" /></f:facet>
 		</h:panelGrid>
