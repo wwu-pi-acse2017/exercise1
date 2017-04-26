@@ -14,7 +14,8 @@
 			<h:outputLabel value="PLZ" for="plz" />
 			<h:inputText id="plz" value="#{processCreateVendor.vendor.plz}" />
 			<h:message for="plz"/>
-			<f:facet name="footer"><h:commandButton value="Submit" action="#{processCreateVendor.submit}" /></f:facet>
+			<f:facet name="footer"><h:commandButton value="Submit" action="#{processCreateVendor.submit}" />
+			<h:commandButton value="Cancel" action="#{processCreateVendor.cancel}" /></f:facet>
 		</h:panelGrid>
 	</h:form></div>
 	<div class="result"><h:outputText rendered="#{not empty processAddUser.error}" styleClass="error" value="#{processAddUser.error}" /></div>

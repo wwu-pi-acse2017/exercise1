@@ -60,6 +60,12 @@ public class ProcessCreateProduct {
 			return "listVendors";
 	}
 	
+	public String cancel() {
+		product = null;
+		
+		return "listVendors";
+	}
+	
 	public String getError() {
 		return errorMessage != null ? errorMessage : "";
 	}

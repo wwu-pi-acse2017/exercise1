@@ -14,7 +14,8 @@
 			<h:outputLabel value="Last Name" for="lastName" />
 			<h:inputText id="lastName" value="#{processAddUser.user.lastName}"/>
 			<h:message for="lastName"/>
-			<f:facet name="footer"><h:commandButton value="Submit" action="#{processAddUser.submit_create_address}" /></f:facet>
+			<f:facet name="footer"><h:commandButton value="Submit" action="#{processAddUser.submit_create_address}" />
+			<h:commandButton value="Cancel" action="#{processAddUser.cancel}" /></f:facet>
 		</h:panelGrid>
 	</h:form></div>
 	<div class="result"><h:outputText rendered="#{not empty processAddUser.error}" styleClass="error" value="#{processAddUser.error}" /></div>

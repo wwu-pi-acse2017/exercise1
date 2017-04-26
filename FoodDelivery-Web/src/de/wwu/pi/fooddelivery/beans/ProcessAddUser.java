@@ -94,6 +94,13 @@ public class ProcessAddUser {
 			return "listUsers";
 	}
 	
+	public String cancel() {
+		user = null;
+		address = null;
+		
+		return "index";
+	}
+	
 //	public void setProcessBean(ProcessBean processBean){
 //		this.processBean = processBean;
 //	}

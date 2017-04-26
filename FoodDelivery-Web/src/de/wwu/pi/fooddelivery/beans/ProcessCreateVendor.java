@@ -50,6 +50,12 @@ public class ProcessCreateVendor {
 			return "listVendors";
 	}
 	
+	public String cancel() {
+		vendor = null;
+		
+		return "index";
+	}
+	
 	public String getError() {
 		return errorMessage != null ? errorMessage : "";
 	}

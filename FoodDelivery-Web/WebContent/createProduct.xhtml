@@ -20,7 +20,8 @@
 			<h:outputLabel value="Price (in cents)" for="priceInCent" />
 			<h:inputText id="priceInCent" value="#{processCreateProduct.product.priceInCent}" />
 			<h:message for="priceInCent"/>
-			<f:facet name="footer"><h:commandButton value="Submit" action="#{processCreateProduct.submit}" /></f:facet>
+			<f:facet name="footer"><h:commandButton value="Submit" action="#{processCreateProduct.submit}" />
+			<h:commandButton value="Cancel" action="#{processCreateProduct.cancel}" /></f:facet>
 		</h:panelGrid>
 	</h:form></div>
 	<div class="result"><h:outputText rendered="#{not empty processCreateProduct.error}" styleClass="error" value="#{processCreateProduct.error}" /></div>
