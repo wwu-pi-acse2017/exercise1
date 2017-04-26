@@ -1,8 +1,11 @@
 package de.wwu.pi.fooddelivery.jpa;
 
+import java.util.ArrayList;
 import java.util.Collection;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -27,7 +30,7 @@ public class Product implements java.io.Serializable {
 	@Min(0)
 	protected int priceInCent;
 
-	@ManyToMany(mappedBy="products")
+	@ManyToMany(mappedBy="products", cascade = {CascadeType.MERGE, CascadeType.PERSIST, CascadeType.REFRESH}, fetch=FetchType.EAGER)
 	protected Collection<Vendor> vendors;
 
 	public int getProductId() {
@@ -47,11 +50,21 @@ public class Product implements java.io.Serializable {
 	}
 
 	public Collection<Vendor> getVendors() {
+		if(vendors == null) vendors = new ArrayList<Vendor>();
+		
 		return vendors;
 	}
 
 	public void setVendors(Collection<Vendor> vendors) {
 		this.vendors = vendors;
+	}
+	
+	public void addVendor(Vendor vendor){
+		this.getVendors().add(vendor);
+	}
+	
+	public void removeVendor(Vendor vendor){
+		this.getVendors().remove(vendor);
 	}
 
 	public int getPriceInCent() {

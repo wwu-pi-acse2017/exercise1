@@ -28,7 +28,7 @@ public class UserServiceBean implements UserService {
 
 	@Override
 	public User createUser(User user) {
-		em.persist(user);
+		em.merge(user);
 		return user;
 	}
 

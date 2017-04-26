@@ -1,6 +1,5 @@
 package de.wwu.pi.fooddelivery.ejb;
 
-import java.util.Collection;
 import java.util.Set;
 
 import javax.annotation.Resource;
@@ -13,7 +12,6 @@ import javax.validation.Validator;
 import javax.validation.ValidatorFactory;
 
 import de.wwu.pi.fooddelivery.jpa.Product;
-import de.wwu.pi.fooddelivery.jpa.Vendor;
 
 @Stateless
 public class ProductServiceBean implements ProductService {
@@ -29,7 +27,7 @@ public class ProductServiceBean implements ProductService {
 	
 	@Override
 	public Product createProduct(Product product) {
-		em.persist(product);
+		em.merge(product);
 		return product;
 	}
 
@@ -40,11 +38,6 @@ public class ProductServiceBean implements ProductService {
 		if (product == null)
 			throw new IllegalArgumentException(String.format("Product with ID %s not found", productId));
 		return product;
-	}
-
-	@Override
-	public Collection<Product> getProductsOfVendor(Vendor vendor) {
-		return em.createQuery("SELECT p FROM Product p INNER JOIN p.vendors vendors WHERE vendors.id in :v", Product.class).setParameter("v", vendor.getVendorId()).getResultList();
 	}
 	
 	@Override

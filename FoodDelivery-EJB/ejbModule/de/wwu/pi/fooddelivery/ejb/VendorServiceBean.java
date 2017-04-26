@@ -27,7 +27,7 @@ public class VendorServiceBean implements VendorService {
 
 	@Override
 	public Vendor createVendor(Vendor vendor) {
-		em.persist(vendor);
+		em.merge(vendor);
 		return vendor;
 	}
 

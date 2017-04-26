@@ -1,7 +1,5 @@
 package de.wwu.pi.fooddelivery.beans;
 
-import java.util.Arrays;
-
 import javax.ejb.EJB;
 import javax.ejb.EJBException;
 import javax.faces.bean.ManagedBean;
@@ -52,8 +50,7 @@ public class ProcessCreateProduct {
 		try {
 			Vendor vendor = vendorEjb.getVendor(vendorId);
 			
-			getProduct().setVendors(Arrays.asList(vendor));
-			productEjb.createProduct(product);
+			vendor.addProduct(getProduct());
 			
 			reset();
 		} catch (EJBException e) {

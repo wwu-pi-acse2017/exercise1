@@ -1,13 +1,10 @@
 package de.wwu.pi.fooddelivery.ejb;
 
-import java.util.Collection;
-
 import javax.ejb.EJBException;
 import javax.ejb.Remote;
 import javax.validation.ConstraintViolationException;
 
 import de.wwu.pi.fooddelivery.jpa.Product;
-import de.wwu.pi.fooddelivery.jpa.Vendor;
 
 @Remote
 public interface ProductService {
@@ -27,14 +24,6 @@ public interface ProductService {
 	 * @throws IllegalArgumentException If no product exists for the given ID.
 	 */
 	Product getProduct(int productId);
-	
-	/**
-	 * Returns the collection of products that are related to a specified vendor.
-	 * @param vendor The vendor to which the products are retrieved.
-	 * @return The collection of products.
-	 * @throws IllegalArgumentException If no product exists for the given ID.
-	 */
-	Collection<Product> getProductsOfVendor(Vendor vendor);
 	
 	/**
 	 * Validate the product entity.

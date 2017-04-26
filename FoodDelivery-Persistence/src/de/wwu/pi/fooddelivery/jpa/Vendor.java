@@ -1,8 +1,11 @@
 package de.wwu.pi.fooddelivery.jpa;
 
+import java.util.ArrayList;
 import java.util.Collection;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -27,7 +30,7 @@ public class Vendor implements java.io.Serializable {
 	@Size(min=5, max=5, message="Zip code must have 5 digits")
 	protected String zip;
 	
-	@ManyToMany
+	@ManyToMany(cascade = {CascadeType.MERGE, CascadeType.PERSIST, CascadeType.REFRESH}, fetch=FetchType.EAGER)
 	protected Collection<Product> products;
 
 	public int getVendorId() {
@@ -55,11 +58,22 @@ public class Vendor implements java.io.Serializable {
 	}
 	
 	public Collection<Product> getProducts() {
+		if(products == null) products = new ArrayList<Product>();
+		
 		return products;
 	}
 
 	public void setProducts(Collection<Product> products) {
 		this.products = products;
+	}
+	
+	public void addProduct(Product product){
+		this.products.add(product);
+		product.addVendor(this);
+	}
+	
+	public void removeProduct(Product product){
+		this.products.remove(product);
 	}
 
 	@Override
