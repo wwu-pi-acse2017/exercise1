@@ -7,6 +7,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToMany;
+import javax.validation.constraints.Min;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
@@ -21,6 +22,10 @@ public class Product implements java.io.Serializable {
 	@NotNull(message="Name required")
 	@Size(min=1, message="Name required")
 	protected String name;
+	
+	@NotNull(message="Price required")
+	@Min(0)
+	protected int priceInCent;
 
 	@ManyToMany
 	@NotNull
@@ -42,11 +47,19 @@ public class Product implements java.io.Serializable {
 		this.name = name;
 	}
 
-	public Collection<Vendor> getVendor() {
+	public Collection<Vendor> getVendors() {
 		return vendors;
 	}
 
-	public void setVendor(Collection<Vendor> vendors) {
+	public void setVendors(Collection<Vendor> vendors) {
 		this.vendors = vendors;
+	}
+
+	public int getPriceInCent() {
+		return priceInCent;
+	}
+
+	public void setPriceInCent(int priceInCent) {
+		this.priceInCent = priceInCent;
 	}
 }

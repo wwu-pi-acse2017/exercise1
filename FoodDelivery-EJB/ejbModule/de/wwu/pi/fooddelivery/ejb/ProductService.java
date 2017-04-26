@@ -13,12 +13,12 @@ import de.wwu.pi.fooddelivery.jpa.Vendor;
 public interface ProductService {
 
 	/**
-	 * Create a new product in the database related to the specified <code>vendor</code>.
-	 * @param vendor The vendor to which a product should be created.
+	 * Create a new product in the database related to the specified <code>product</code>.
+	 * @param vendor The product that should be created.
 	 * @return The newly created product.
 	 * @throws ConstraintViolationException (wrapped in an {@link EJBException})
 	 */
-	Product createProduct(Vendor vendor);
+	Product createProduct(Product product);
 	
 	/**
 	 * Returns the product with the specified ID.

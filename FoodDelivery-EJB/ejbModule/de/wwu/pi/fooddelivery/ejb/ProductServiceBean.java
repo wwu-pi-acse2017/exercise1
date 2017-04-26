@@ -28,9 +28,9 @@ public class ProductServiceBean implements ProductService {
     private Validator validator;
 	
 	@Override
-	public Product createProduct(Vendor vendor) {
-		// TODO Auto-generated method stub
-		return null;
+	public Product createProduct(Product product) {
+		em.persist(product);
+		return product;
 	}
 
 	@Override

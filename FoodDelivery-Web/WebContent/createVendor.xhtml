@@ -17,7 +17,7 @@
 			<f:facet name="footer"><h:commandButton value="Submit" action="#{processCreateVendor.submit}" /></f:facet>
 		</h:panelGrid>
 	</h:form></div>
-	<div class="result"><h:outputText rendered="#{not empty processCreateVendor.lastResult}" styleClass="#{processCreateVendor.success}" value="#{processCreateVendor.lastResult}" /></div>
+	<div class="result"><h:outputText rendered="#{not empty processAddUser.error}" styleClass="error" value="#{processAddUser.error}" /></div>
 	</ui:define>
 </ui:composition>
 </html>

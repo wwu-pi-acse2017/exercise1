@@ -1,12 +1,16 @@
 package de.wwu.pi.fooddelivery.beans;
 
+import java.util.Arrays;
+
 import javax.ejb.EJB;
 import javax.ejb.EJBException;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
 import javax.validation.ConstraintViolationException;
 
+import de.wwu.pi.fooddelivery.ejb.ProductService;
 import de.wwu.pi.fooddelivery.ejb.VendorService;
+import de.wwu.pi.fooddelivery.jpa.Product;
 import de.wwu.pi.fooddelivery.jpa.Vendor;
 import de.wwu.pi.fooddelivery.web.Util;
 
@@ -16,26 +20,32 @@ import de.wwu.pi.fooddelivery.web.Util;
 
 @ManagedBean
 @SessionScoped
-public class ProcessCreateVendor {
-	private Vendor vendor;
+public class ProcessCreateProduct {
+	private int vendorId;
+	private Product product;
 	private String errorMessage;
 
 	@EJB
 	private VendorService vendorEjb;
+	
+	@EJB
+	private ProductService productEjb;
 
-	public Vendor getVendor() {
-		if (vendor == null)
-			vendor = new Vendor();
-		return vendor;
+	public Product getProduct() {
+		if (product == null)
+			product = new Product();
+		return product;
 	}
 
 	public String submit() {
 		// Action
 		try {
-			vendorEjb.validate(getVendor());
-			vendorEjb.createVendor(getVendor());
+			Vendor vendor = vendorEjb.getVendor(vendorId);
 			
-			vendor = null;
+			getProduct().setVendors(Arrays.asList(vendor));
+			productEjb.createProduct(product);
+			
+			product = null;
 			errorMessage = null;
 		} catch (EJBException e) {
 			errorMessage = "Vendor not created: " + Util.getConstraintMessage(e);
