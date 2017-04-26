@@ -24,7 +24,7 @@
 			<h:inputText id="bic" value="#{processAddUser.user.bic}"/>
 			<h:message for="bic"/>
 			<f:facet name="footer"><h:commandButton value="Submit" action="#{processAddUser.submit_create_user}" />
-			<h:commandButton value="Cancel" action="#{processAddUser.cancel}" /></f:facet>
+			<h:commandButton value="Cancel" action="#{processAddUser.cancel}" immediate="true" /></f:facet>
 		</h:panelGrid>
 	</h:form></div>
 	<div class="result"><h:outputText rendered="#{not empty processAddUser.error}" styleClass="error" value="#{processAddUser.error}" /></div>

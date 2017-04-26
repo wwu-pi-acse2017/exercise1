@@ -52,7 +52,7 @@ public class ProcessCreateVendor {
 	
 	public void cancel() {
 		vendor = null;
-		System.out.println("cancel");
+		
 		Util.redirectToRoot();
 	}
 	
