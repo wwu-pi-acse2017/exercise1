@@ -34,5 +34,57 @@ public class Address implements java.io.Serializable {
 	
 	@Size(max=1000, message="Space for additional information is limited")
 	protected String additionalLocationInformation;
-	
+
+	public int getAddressId() {
+		return addressId;
+	}
+
+	public void setAddressId(int addressId) {
+		this.addressId = addressId;
+	}
+
+	public String getStreet() {
+		return street;
+	}
+
+	public void setStreet(String street) {
+		this.street = street;
+	}
+
+	public String getStreetNo() {
+		return streetNo;
+	}
+
+	public void setStreetNo(String streetNo) {
+		this.streetNo = streetNo;
+	}
+
+	public String getZip() {
+		return zip;
+	}
+
+	public void setZip(String zip) {
+		this.zip = zip;
+	}
+
+	public String getCity() {
+		return city;
+	}
+
+	public void setCity(String city) {
+		this.city = city;
+	}
+
+	public String getAdditionalLocationInformation() {
+		return additionalLocationInformation;
+	}
+
+	public void setAdditionalLocationInformation(String additionalLocationInformation) {
+		this.additionalLocationInformation = additionalLocationInformation;
+	}
+
+	@Override
+	public String toString() {
+		return street + " " + streetNo + ", " + zip + " " + city + " [addressId=" + addressId + "]";
+	}
 }

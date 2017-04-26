@@ -6,6 +6,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToOne;
 import javax.validation.constraints.Min;
+import javax.validation.constraints.NotNull;
 
 @Entity
 public class OrderPosition implements java.io.Serializable {
@@ -18,6 +19,7 @@ public class OrderPosition implements java.io.Serializable {
 	@Min(1)
 	protected int quantity;
 	
+	@NotNull
 	@OneToOne
 	protected Product product;
 
@@ -37,4 +39,8 @@ public class OrderPosition implements java.io.Serializable {
 		this.product = product;
 	}
 
+	@Override
+	public String toString() {
+		return quantity + "x " + product.toString() + " [orderPositionId=" + orderPositionId + "]";
+	}
 }

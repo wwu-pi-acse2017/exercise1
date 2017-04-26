@@ -76,4 +76,8 @@ public class Order implements java.io.Serializable {
 		this.user = user;
 	}
 	
+	@Override
+	public String toString() {
+		return orderDate + " " + deliveryTime + " [orderId=" + orderId + "]";
+	}
 }

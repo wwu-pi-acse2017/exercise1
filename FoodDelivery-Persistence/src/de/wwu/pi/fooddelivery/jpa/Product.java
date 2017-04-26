@@ -62,4 +62,9 @@ public class Product implements java.io.Serializable {
 	public void setPriceInCent(int priceInCent) {
 		this.priceInCent = priceInCent;
 	}
+	
+	@Override
+	public String toString() {
+		return name + " [productId=" + productId + "]";
+	}
 }
