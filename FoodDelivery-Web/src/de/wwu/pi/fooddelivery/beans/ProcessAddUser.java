@@ -18,10 +18,7 @@ import de.wwu.pi.fooddelivery.web.Util;
 @ManagedBean
 @SessionScoped
 public class ProcessAddUser {
-	
-	//@ManagedProperty(value="#{processAddUser}")
-	//private ProcessBean processBean;
-	//private User user;
+
 	private String errorMessage;
 	
 	private User user = new User();
@@ -30,14 +27,6 @@ public class ProcessAddUser {
 	
 	@EJB
 	private UserService userEjb; 
-
-//	public User getUser() {
-////		if (user == null)
-////			user = new User();
-////		return user;
-////		return processBean.getUser();
-//	}
-	
 	
 	public User getUser() {
 		return user;
@@ -74,33 +63,30 @@ public class ProcessAddUser {
 			getUser().setAddress(getAddress());
 			userEjb.createUser(getUser());
 			
-			//TODO check if address is persisted
-			
-			errorMessage = null;
+			reset();
 		} catch (EJBException e) {
 			errorMessage = "User not created: " + Util.getConstraintMessage(e);
 		}
-
+		
 		// Navigation
 		if (errorMessage != null)
 			return null;
 		else
-			// TODO cleanup
-			
 			return "listUsers";
 	}
 	
-	public String cancel() {
-		user = null;
-		address = null;
+	public void cancel() {
+		reset();
 		
-		return "index";
+		Util.redirectToRoot();
 	}
 	
-//	public void setProcessBean(ProcessBean processBean){
-//		this.processBean = processBean;
-//	}
-
+	public void reset() {
+		user = null;
+		address = null;
+		errorMessage = null;
+	}
+	
 	public String getError() {
 		return errorMessage != null ? errorMessage : "";
 	}

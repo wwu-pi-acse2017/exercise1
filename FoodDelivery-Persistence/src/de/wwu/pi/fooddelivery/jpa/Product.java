@@ -27,8 +27,7 @@ public class Product implements java.io.Serializable {
 	@Min(0)
 	protected int priceInCent;
 
-	@ManyToMany
-	@NotNull
+	@ManyToMany(mappedBy="products")
 	protected Collection<Vendor> vendors;
 
 	public int getProductId() {

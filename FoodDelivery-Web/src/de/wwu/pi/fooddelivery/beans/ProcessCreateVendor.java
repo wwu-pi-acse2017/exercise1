@@ -31,12 +31,11 @@ public class ProcessCreateVendor {
 
 	public String submit() {
 		// Action
-		try {System.out.println("Submit");
+		try {
 			vendorEjb.validate(getVendor());
 			vendorEjb.createVendor(getVendor());
 			
-			vendor = null;
-			errorMessage = null;
+			reset();
 		} catch (EJBException e) {
 			errorMessage = "Vendor not created: " + Util.getConstraintMessage(e);
 		} catch (ConstraintViolationException e) {
@@ -51,10 +50,16 @@ public class ProcessCreateVendor {
 	}
 	
 	public void cancel() {
-		vendor = null;
+		reset();
 		
 		Util.redirectToRoot();
 	}
+	
+	public void reset() {
+		vendor = null;
+		errorMessage = null;
+	}
+	
 	
 	public String getError() {
 		return errorMessage != null ? errorMessage : "";

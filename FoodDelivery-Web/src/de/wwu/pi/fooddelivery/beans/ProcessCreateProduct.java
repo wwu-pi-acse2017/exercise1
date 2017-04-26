@@ -55,14 +55,13 @@ public class ProcessCreateProduct {
 			getProduct().setVendors(Arrays.asList(vendor));
 			productEjb.createProduct(product);
 			
-			product = null;
-			errorMessage = null;
+			reset();
 		} catch (EJBException e) {
 			errorMessage = "Vendor not created: " + Util.getConstraintMessage(e);
 		} catch (ConstraintViolationException e) {
 			errorMessage = "Vendor not created: " + Util.getConstraintMessage(e);
 		}
-
+		
 		// Navigation
 		if (errorMessage != null)
 			return null;
@@ -71,9 +70,14 @@ public class ProcessCreateProduct {
 	}
 	
 	public String cancel() {
-		product = null;
+		reset();
 		
 		return "listVendors";
+	}
+	
+	public void reset() {
+		product = null;
+		errorMessage = null;
 	}
 	
 	public String getError() {
