@@ -1,6 +1,7 @@
 package de.wwu.pi.fooddelivery.jpa;
 
 import java.util.Collection;
+import java.util.Date;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -8,6 +9,8 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
@@ -19,13 +22,13 @@ public class Order implements java.io.Serializable {
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	protected int orderId;
 	
-	// TODO date
 	@NotNull
-	protected String orderDate;
+	@Temporal(TemporalType.DATE)
+	protected Date orderDate;
 	
-	//TODO time
 	@NotNull
-	protected String deliveryTime;
+	@Temporal(TemporalType.TIME)
+	protected Date deliveryTime;
 	
 	@Size(max=1000, message="Space for additional information is limited")
 	protected String additionalOrderInformation;
@@ -36,19 +39,19 @@ public class Order implements java.io.Serializable {
 	@OneToOne
 	protected User user;
 
-	public String getOrderDate() {
+	public Date getOrderDate() {
 		return orderDate;
 	}
 
-	public void setOrderDate(String orderDate) {
+	public void setOrderDate(Date orderDate) {
 		this.orderDate = orderDate;
 	}
 
-	public String getDeliveryTime() {
+	public Date getDeliveryTime() {
 		return deliveryTime;
 	}
 
-	public void setDeliveryTime(String deliveryTime) {
+	public void setDeliveryTime(Date deliveryTime) {
 		this.deliveryTime = deliveryTime;
 	}
 
@@ -78,6 +81,6 @@ public class Order implements java.io.Serializable {
 	
 	@Override
 	public String toString() {
-		return orderDate + " " + deliveryTime + " [orderId=" + orderId + "]";
+		return orderDate + " at " + deliveryTime + " [orderId=" + orderId + "]";
 	}
 }
