@@ -1,10 +1,24 @@
-<!DOCTYPE html>
-<html>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"> 
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html">
 <head>
-<meta charset="ISO-8859-1">
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
 <title>FoodDelivery Home</title>
 </head>
 <body>
 Welcome to FoodDelivery!
+<br/><br/>
+Available processes:
+<ul>
+	<li><h:link outcome="/createVendor.xhtml">Add new vendor</h:link></li>
+	<li><h:link outcome="/addUser_step1_createUser.xhtml">Add new user</h:link></li>
+	<li><h:link outcome="/sendOrder_step1_createOrder.xhtml">Add new order</h:link></li>
+</ul>
+<br/>
+Available overviews:
+<ul>
+	<li><h:link outcome="/listVendors.xhtml">Vendor list</h:link></li>
+	<li><h:link outcome="/listUsers.xhtml">User list</h:link></li>
+</ul>
 </body>
 </html>
