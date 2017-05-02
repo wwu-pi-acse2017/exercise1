@@ -12,6 +12,6 @@
 		</attributes>
 	</classpathentry>
 	<classpathentry kind="con" path="org.eclipse.jst.j2ee.internal.module.container"/>
-	<classpathentry combineaccessrules="false" kind="src" path="/FoodDelivery-Persistence"/>
+	<classpathentry combineaccessrules="false" kind="src" path="/FoodDeliveryX-Persistence"/>
 	<classpathentry kind="output" path="build/classes"/>
 </classpath>
