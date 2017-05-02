@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?><project-modules id="moduleCoreId" project-version="1.5.0">
+    <wb-module deploy-name="FoodDeliveryX">
+        <wb-resource deploy-path="/" source-path="/EarContent" tag="defaultRootSource"/>
+        <dependent-module archiveName="FoodDeliveryX-EJB.jar" deploy-path="/" handle="module:/resource/FoodDeliveryX-EJB/FoodDeliveryX-EJB">
+            <dependent-object/>
+            <dependency-type>uses</dependency-type>
+        </dependent-module>
+        <dependent-module archiveName="FoodDeliveryX-Persistence.jar" deploy-path="/lib" handle="module:/resource/FoodDeliveryX-Persistence/FoodDeliveryX-Persistence">
+            <dependency-type>uses</dependency-type>
+        </dependent-module>
+        <dependent-module archiveName="FoodDeliveryX-Web.war" deploy-path="/" handle="module:/resource/FoodDeliveryX-Web/FoodDeliveryX-Web">
+            <dependent-object/>
+            <dependency-type>uses</dependency-type>
+        </dependent-module>
+    </wb-module>
+</project-modules>

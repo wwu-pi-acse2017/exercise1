@@ -25,7 +25,7 @@
 	<h:dataTable value="#{vendorPage.products}" var="cur"
 		rendered="#{not empty vendorPage.products}"
 		styleClass="data-table" 
-		columnClasses="data-cell,data-cell"
+		columnClasses="data-cell,data-cell, data-cell"
 		headerClass="data-cell header-cell">
 		<h:column>
 			<f:facet name="header">Product ID</f:facet>
@@ -34,6 +34,10 @@
 		<h:column>
 			<f:facet name="header">Name</f:facet>
 			#{cur.name}
+		</h:column>
+		<h:column>
+			<f:facet name="header">Price (in cents)</f:facet>
+			#{cur.priceInCent}
 		</h:column>
 	</h:dataTable>
 	<h:link outcome="/createProduct.xhtml" value="Add new product">
