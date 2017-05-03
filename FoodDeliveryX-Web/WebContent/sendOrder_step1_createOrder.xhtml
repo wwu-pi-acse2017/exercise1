@@ -9,10 +9,14 @@
 	<div class="inputForm"><h:form>
 		<h:panelGrid columns="3" columnClasses="form-label,form-input,form-message error" footerClass="form-footer">
 			<h:outputLabel value="Order date" for="orderDate" />
-			<h:inputText id="orderDate" value="#{processSendOrder.order.orderDate}"/>
+			<h:inputText id="orderDate" value="#{processSendOrder.order.orderDate}">
+				<f:convertDateTime pattern="yyyy-MM-dd" />
+			</h:inputText>
 			<h:message for="orderDate"/>
 			<h:outputLabel value="Desired delivery time" for="deliveryTime" />
-			<h:inputText id="deliveryTime" value="#{processSendOrder.order.deliveryTime}"/>
+			<h:inputText id="deliveryTime" value="#{processSendOrder.order.deliveryTime}">
+				<f:convertDateTime pattern="HH:MM" />
+			</h:inputText>
 			<h:message for="deliveryTime"/>
 			<h:outputLabel value="Additional order information" for="additionalOrderInformation" />
 			<h:inputTextarea id="additionalOrderInformation" value="#{processSendOrder.order.additionalOrderInformation}"/>
