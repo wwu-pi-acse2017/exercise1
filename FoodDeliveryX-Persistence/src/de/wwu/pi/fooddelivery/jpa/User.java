@@ -1,5 +1,7 @@
 package de.wwu.pi.fooddelivery.jpa;
 
+import java.util.Date;
+
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -25,16 +27,15 @@ public class User implements java.io.Serializable {
 	@Size(min=1, message="Lastname required")
 	protected String lastName;
 	
-	//TODO Date
 	@NotNull
-	protected String birthDate;
+	protected Date birthDate;
 
 	@NotNull(message="IBAN required")
-	@Size(min=15, max=34, message="IBAN required")
+	@Size(min=15, max=34, message="Incorrect IBAN (must be between 15 and 34 characters)")
 	protected String iban;
 	
 	@NotNull(message="BIC required")
-	@Size(min=8, max=11, message="BIC required")
+	@Size(min=8, max=11, message="Incorrect BIC (must be between 8 and 11 characters)")
 	protected String bic;
 	
 	@OneToOne(cascade=CascadeType.ALL)
@@ -88,11 +89,11 @@ public class User implements java.io.Serializable {
 		this.address = address;
 	}
 	
-	public String getBirthDate() {
+	public Date getBirthDate() {
 		return birthDate;
 	}
 
-	public void setBirthDate(String birthDate) {
+	public void setBirthDate(Date birthDate) {
 		this.birthDate = birthDate;
 	}
 	

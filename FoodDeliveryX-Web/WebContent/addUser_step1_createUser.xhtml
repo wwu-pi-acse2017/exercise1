@@ -15,7 +15,9 @@
 			<h:inputText id="lastName" value="#{processAddUser.user.lastName}"/>
 			<h:message for="lastName"/>
 			<h:outputLabel value="Birth date" for="birthDate" />
-			<h:inputText id="birthDate" value="#{processAddUser.user.birthDate}"/>
+			<h:inputText id="birthDate" value="#{processAddUser.user.birthDate}">
+				<f:convertDateTime pattern="yyyy-MM-dd" />
+			</h:inputText>
 			<h:message for="birthDate"/>
 			<h:outputLabel value="IBAN" for="iban" />
 			<h:inputText id="iban" value="#{processAddUser.user.iban}"/>

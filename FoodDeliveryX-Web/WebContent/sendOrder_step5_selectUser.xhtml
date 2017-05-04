@@ -1,0 +1,24 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core">
+<ui:composition template="/resources/master.xhtml">
+	<ui:define name="title">Who are you?</ui:define>
+	<ui:define name="content">
+	<div class="inputForm"><h:form>
+		<h:outputLabel value="User" for="userSelector" />
+		<br/>	
+		<h:selectOneListbox value="#{processSendOrder.user}" id="userSelector" required="true" rows="25" requiredMessage="User must be selected to proceed!"  converter="#{processSendOrder.createUserConverter()}">
+    		<f:selectItems value="#{processSendOrder.users}" />
+		</h:selectOneListbox>
+		<br/>
+		<h:message for="userSelector" styleClass="error" />
+		<br/><br/>
+		<h:commandButton value="Submit" action="#{processSendOrder.submit_step5_selectUser}" />
+		<h:commandButton value="Cancel" action="#{processSendOrder.cancel}" immediate="true" />
+	</h:form></div>
+	<div class="result"><h:outputText rendered="#{not empty processSendOrder.error}" styleClass="error" value="#{processSendOrder.error}" /></div>
+	</ui:define>
+</ui:composition>
+</html>

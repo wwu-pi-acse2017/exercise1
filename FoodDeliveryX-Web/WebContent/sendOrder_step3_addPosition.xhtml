@@ -1,0 +1,28 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core">
+<ui:composition template="/resources/master.xhtml">
+	<ui:define name="title">What would you like to order?</ui:define>
+	<ui:define name="content">
+	<div class="inputForm"><h:form>
+	<h:panelGrid columns="3" columnClasses="form-label,form-input,form-message error" footerClass="form-footer">
+		<h:outputLabel value="Quantity" for="quantity" />
+		<h:inputText id="quantity" value="#{processSendOrder.orderPosition.quantity}"/>
+		<h:message for="quantity"/>
+		
+		<h:outputLabel value="Product" for="productSelector" />
+		<h:selectOneListbox value="#{processSendOrder.orderPosition.product}" id="productSelector" required="true" rows="25" requiredMessage="Product must be selected to proceed!"  converter="#{processSendOrder.createProductConverter()}">
+    		<f:selectItems value="#{processSendOrder.vendor.products}" />
+		</h:selectOneListbox>
+		<h:message for="productSelector" styleClass="error" />
+		
+		<f:facet name="footer"><h:commandButton value="Submit" action="#{processSendOrder.submit_step3_addOrderPosition}" />
+		<h:commandButton value="Cancel" action="#{processSendOrder.cancel}" immediate="true" /></f:facet>
+	</h:panelGrid>
+	</h:form></div>
+	<div class="result"><h:outputText rendered="#{not empty processSendOrder.error}" styleClass="error" value="#{processSendOrder.error}" /></div>
+	</ui:define>
+</ui:composition>
+</html>

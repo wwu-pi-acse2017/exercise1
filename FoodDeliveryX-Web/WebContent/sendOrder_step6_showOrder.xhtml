@@ -1,0 +1,53 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core">
+<ui:composition template="/resources/master.xhtml">
+	<ui:define name="title">Review order information</ui:define>
+	<ui:define name="content">
+	<div class="inputForm"><h:form>
+	<h:panelGrid columns="2" columnClasses="form-label,form-input" footerClass="form-footer">
+		<h:outputLabel value="Order date" for="orderDate" />
+		<h:outputLabel id="orderDate" value="#{processSendOrder.order.orderDate}">
+			<f:convertDateTime pattern="yyyy-MM-dd" />
+		</h:outputLabel>
+		
+		<h:outputLabel value="Desired delivery time" for="deliveryTime" />
+		<h:outputLabel id="deliveryTime" value="#{processSendOrder.order.deliveryTime}">
+			<f:convertDateTime pattern="HH:MM" />
+		</h:outputLabel>
+		
+		<h:outputLabel value="Additional order information" for="additionalOrderInformation" />
+		<h:outputLabel id="additionalOrderInformation" value="#{processSendOrder.order.additionalOrderInformation}"/>
+		
+		<h:outputLabel value="Vendor" for="vendor" />
+		<h:outputLabel value="#{processSendOrder.order.vendor}" id="vendor" converter="#{processSendOrder.createVendorConverter()}" />
+		
+		<h:outputLabel value="User" for="user" />
+		<h:outputLabel value="#{processSendOrder.order.user}" id="user" converter="#{processSendOrder.createUserConverter()}" />
+		
+			
+		<h:outputLabel value="Order positions" for="orderPositions" />
+		<h:dataTable value="#{processSendOrder.order.orderPositions}" id="orderPositions" var="cur"
+			styleClass="data-table" 
+			columnClasses="data-cell,data-cell"
+			headerClass="data-cell header-cell">
+			<h:column>
+				<f:facet name="quantity">Quenatity</f:facet>
+				#{cur.quantity}
+			</h:column>
+			<h:column>
+				<f:facet name="product">Product</f:facet>
+				#{cur.product.toString()}
+			</h:column>
+		</h:dataTable>
+	
+		<f:facet name="footer"><h:commandButton value="Submit" action="#{processSendOrder.submit_step6_showOrder}" />
+		<h:commandButton value="Cancel" action="#{processSendOrder.cancel}" immediate="true" /></f:facet>
+	</h:panelGrid>
+	
+	</h:form></div>
+	</ui:define>
+</ui:composition>
+</html>

@@ -2,6 +2,7 @@ package de.wwu.pi.fooddelivery.jpa;
 
 import java.util.Collection;
 import java.util.Date;
+import java.util.HashSet;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
@@ -89,11 +90,20 @@ public class Order implements java.io.Serializable {
 	}
 
 	public Collection<OrderPosition> getOrderPositions() {
+		if(orderPositions == null) orderPositions = new HashSet<OrderPosition>();
 		return orderPositions;
 	}
 
 	public void setOrderPositions(Collection<OrderPosition> orderPositions) {
 		this.orderPositions = orderPositions;
+	}
+	
+	public void addOrderPosition(OrderPosition position){
+		this.getOrderPositions().add(position);
+	}
+	
+	public void removeOrderPosition(OrderPosition position){
+		this.getOrderPositions().remove(position);
 	}
 
 	public User getUser() {
