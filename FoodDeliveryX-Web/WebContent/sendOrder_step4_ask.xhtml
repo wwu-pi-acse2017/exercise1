@@ -7,14 +7,14 @@
 	<ui:define name="title">Do you need something else?</ui:define>
 	<ui:define name="content">
 	<div class="inputForm"><h:form>
-		<h2>Do you need something else?</h2> 
-		
-		<h:commandButton value="Yes" action="#{processSendOrder.submit_step4_ask('YES')}" />
-		<br/>
-		<h:commandButton value="No" action="#{processSendOrder.submit_step4_ask('NO')}" />
-		<br/><br/>
-		<h:commandButton value="Cancel" action="#{processSendOrder.cancel}" immediate="true" />
+	<h2>Do you need something else?</h2> 
 	
+	<h:commandButton value="Yes" action="#{processSendOrder.submit_step4_ask('YES')}" />
+	<br/>
+	<h:commandButton value="No" action="#{processSendOrder.submit_step4_ask('NO')}" />
+	<br/><br/>
+	<h:commandButton value="Cancel" action="#{processSendOrder.cancel}" immediate="true" />
+
 	</h:form></div>
 	<div class="result"><h:outputText rendered="#{not empty processSendOrder.error}" styleClass="error" value="#{processSendOrder.error}" /></div>
 	</ui:define>

@@ -1,8 +1,10 @@
 package de.wwu.pi.fooddelivery.jpa;
 
+import java.util.Calendar;
 import java.util.Collection;
 import java.util.Date;
 import java.util.HashSet;
+import java.util.TimeZone;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
@@ -46,6 +48,17 @@ public class Order implements java.io.Serializable {
 	
 	@ManyToOne(cascade = {CascadeType.MERGE, CascadeType.PERSIST, CascadeType.REFRESH})
 	protected Vendor vendor;
+	
+	public Order(){
+		// default values
+		orderDate = new Date();
+		
+		// Delivery time default to 90 minutes from now
+		Calendar cal = Calendar.getInstance(TimeZone.getTimeZone("CEST"));
+        cal.setTime(orderDate);
+        cal.add(Calendar.MINUTE, 90);
+        deliveryTime = cal.getTime();
+	}
 
 	public int getOrderId() {
 		return orderId;

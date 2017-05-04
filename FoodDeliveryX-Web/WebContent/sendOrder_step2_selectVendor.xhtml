@@ -7,16 +7,18 @@
 	<ui:define name="title">Choose a vendor</ui:define>
 	<ui:define name="content">
 	<div class="inputForm"><h:form>
-		<h:outputLabel value="Vendor" for="vendorSelector" />
-		<br/>	
-		<h:selectOneListbox value="#{processSendOrder.vendor}" id="vendorSelector" required="true" rows="25" requiredMessage="Vendor must be selected to proceed!"  converter="#{processSendOrder.createVendorConverter()}">
-    		<f:selectItems value="#{processSendOrder.vendors}" />
-		</h:selectOneListbox>
-		<br/>
-		<h:message for="vendorSelector" styleClass="error" />
-		<br/><br/>
-		<h:commandButton value="Submit" action="#{processSendOrder.submit_step2_selectVendor}" />
-		<h:commandButton value="Cancel" action="#{processSendOrder.cancel}" immediate="true" />
+	<h2>Choose a vendor</h2>
+	
+	<h:outputLabel value="Vendor" for="vendorSelector" />
+	<br/>	
+	<h:selectOneListbox value="#{processSendOrder.vendor}" id="vendorSelector" required="true" rows="15" requiredMessage="Vendor must be selected to proceed!"  converter="#{processSendOrder.createVendorConverter()}">
+   		<f:selectItems value="#{processSendOrder.vendors}" />
+	</h:selectOneListbox>
+	<br/>
+	<h:message for="vendorSelector" styleClass="error" />
+	<br/><br/>
+	<h:commandButton value="Submit" action="#{processSendOrder.submit_step2_selectVendor}" />
+	<h:commandButton value="Cancel" action="#{processSendOrder.cancel}" immediate="true" />
 	</h:form></div>
 	<div class="result"><h:outputText rendered="#{not empty processSendOrder.error}" styleClass="error" value="#{processSendOrder.error}" /></div>
 	</ui:define>

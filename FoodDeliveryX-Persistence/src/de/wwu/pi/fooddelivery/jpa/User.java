@@ -1,7 +1,6 @@
 package de.wwu.pi.fooddelivery.jpa;
 
 import java.util.Date;
-
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -9,7 +8,10 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToOne;
 import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Past;
 import javax.validation.constraints.Size;
+
+import de.wwu.pi.fooddelivery.constraints.IsAdult;
 
 @Entity
 public class User implements java.io.Serializable {
@@ -28,6 +30,8 @@ public class User implements java.io.Serializable {
 	protected String lastName;
 	
 	@NotNull
+	@Past
+	@IsAdult // Custom validation
 	protected Date birthDate;
 
 	@NotNull(message="IBAN required")
