@@ -26,7 +26,7 @@ public class VendorServiceBean implements VendorService {
     private Validator validator;
 
 	@Override
-	public Vendor createVendor(Vendor vendor) {
+	public Vendor create(Vendor vendor) {
 		em.merge(vendor);
 		return vendor;
 	}
@@ -36,11 +36,11 @@ public class VendorServiceBean implements VendorService {
 		Vendor newVendor = new Vendor();
 		newVendor.setName(name);
 		newVendor.setZip(zip);
-		return createVendor(newVendor);
+		return create(newVendor);
 	}
 
 	@Override
-	public Vendor getVendor(int vendorId) {
+	public Vendor get(int vendorId) {
 		Vendor vendor = em.find(Vendor.class, vendorId);
 
 		if (vendor == null)
@@ -49,7 +49,7 @@ public class VendorServiceBean implements VendorService {
 	}
 
 	@Override
-	public Collection<Vendor> getAllVendors() {
+	public Collection<Vendor> getAll() {
 		return em.createQuery("FROM Vendor", Vendor.class).getResultList();
 	}
 
@@ -58,5 +58,15 @@ public class VendorServiceBean implements VendorService {
 		Set<ConstraintViolation<Vendor>> violations = validator.validate(vendor);
 		if(!violations.isEmpty()) throw
 			new ConstraintViolationException(violations);
+	}
+
+	@Override
+	public Vendor update(Vendor vendor) {
+		return em.merge(vendor);
+	}
+
+	@Override
+	public void delete(int id){
+		em.remove(get(id));
 	}
 }

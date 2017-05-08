@@ -27,7 +27,7 @@ public class UserServiceBean implements UserService {
     private Validator validator;
 
 	@Override
-	public User createUser(User user) {
+	public User create(User user) {
 		em.merge(user);
 		return user;
 	}
@@ -37,11 +37,11 @@ public class UserServiceBean implements UserService {
 		User newUser = new User();
 		newUser.setFirstName(firstName);
 		newUser.setLastName(lastName);
-		return createUser(newUser);
+		return create(newUser);
 	}
 
 	@Override
-	public User getUser(int userId) {
+	public User get(int userId) {
 		User user = em.find(User.class, userId);
 
 		if (user == null)
@@ -50,7 +50,7 @@ public class UserServiceBean implements UserService {
 	}
 
 	@Override
-	public Collection<User> getAllUsers() {
+	public Collection<User> getAll() {
 		return em.createQuery("FROM User", User.class).getResultList();
 	}
 
@@ -66,5 +66,15 @@ public class UserServiceBean implements UserService {
 		Set<ConstraintViolation<Address>> violations = validator.validate(address);
 		if(!violations.isEmpty()) throw
 			new ConstraintViolationException(violations);
+	}
+
+	@Override
+	public User update(User user) {
+		return em.merge(user);
+	}
+
+	@Override
+	public void delete(int id){
+		em.remove(get(id));
 	}
 }

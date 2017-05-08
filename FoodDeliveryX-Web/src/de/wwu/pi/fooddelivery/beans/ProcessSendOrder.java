@@ -182,7 +182,7 @@ public class ProcessSendOrder {
 	public Collection<Vendor> getVendors(){
 		// Necessary to store vendors temporarily, otherwise selection will not validate 
 		// (EJB is not available during internal JSF validation phase)
-		if(vendors == null) vendors = vendorEjb.getAllVendors();
+		if(vendors == null) vendors = vendorEjb.getAll();
 		return vendors;
 	}
 	
@@ -197,7 +197,7 @@ public class ProcessSendOrder {
 	public Collection<User> getUsers(){
 		// Necessary to store users temporarily, otherwise selection will not validate 
 		// (EJB is not available during internal JSF validation phase)
-		if(users == null) users = userEjb.getAllUsers();
+		if(users == null) users = userEjb.getAll();
 		return users;
 	}
 

@@ -30,7 +30,7 @@ public class OrderServiceBean implements OrderService {
     private Validator validator;
 
 	@Override
-	public Order createOrder(Order order) {
+	public Order create(Order order) {
 		em.merge(order);
 		return order;
 	}
@@ -44,11 +44,11 @@ public class OrderServiceBean implements OrderService {
 		newOrder.setAdditionalOrderInformation(additionalOrderInformation);
 		newOrder.setOrderPositions(orderPositions);
 		newOrder.setUser(user); //TODO bi-directional reference
-		return createOrder(newOrder);
+		return create(newOrder);
 	}
 
 	@Override
-	public Order getOrder(int orderId) {
+	public Order get(int orderId) {
 		Order order = em.find(Order.class, orderId);
 
 		if (order == null)
@@ -57,7 +57,7 @@ public class OrderServiceBean implements OrderService {
 	}
 
 	@Override
-	public Collection<Order> getAllOrders() {
+	public Collection<Order> getAll() {
 		return em.createQuery("FROM FoodOrder", Order.class).getResultList();
 	}
 
@@ -66,5 +66,15 @@ public class OrderServiceBean implements OrderService {
 		Set<ConstraintViolation<Order>> violations = validator.validate(order);
 		if(!violations.isEmpty()) throw
 			new ConstraintViolationException(violations);
+	}
+	
+	@Override
+	public Order update(Order entity) {
+		return em.merge(entity);
+	}
+	
+	@Override
+	public void delete(int id){
+		em.remove(get(id));
 	}
 }

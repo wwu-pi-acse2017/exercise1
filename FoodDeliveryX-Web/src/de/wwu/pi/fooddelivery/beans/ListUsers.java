@@ -18,7 +18,7 @@ public class ListUsers {
 	
 	public Collection<User> getUsers(){
 		if(users == null)
-			users = userEjb.getAllUsers();
+			users = userEjb.getAll();
 		return users;
 	}
 }

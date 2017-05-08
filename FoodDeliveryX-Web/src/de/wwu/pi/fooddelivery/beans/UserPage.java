@@ -38,7 +38,7 @@ public class UserPage {
 
 	public User getUser() {
 		if(user == null)
-			user = userEjb.getUser(getUserId());
+			user = userEjb.get(getUserId());
 		return user;
 	}
 }

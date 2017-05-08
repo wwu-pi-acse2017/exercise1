@@ -18,7 +18,7 @@ public class ListVendors {
 	
 	public Collection<Vendor> getVendors(){
 		if(vendors == null)
-			vendors = vendorEjb.getAllVendors();
+			vendors = vendorEjb.getAll();
 		return vendors;
 	}
 }

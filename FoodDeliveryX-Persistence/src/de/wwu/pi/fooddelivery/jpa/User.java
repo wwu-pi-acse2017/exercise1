@@ -30,8 +30,8 @@ public class User implements java.io.Serializable {
 	protected String lastName;
 	
 	@NotNull
-	@Past
-	@IsAdult // Custom validation
+	@Past(message="Birthdate cannot be in the future!")
+	@IsAdult(message="The user is not yet adult!") // Custom validation
 	protected Date birthDate;
 
 	@NotNull(message="IBAN required")

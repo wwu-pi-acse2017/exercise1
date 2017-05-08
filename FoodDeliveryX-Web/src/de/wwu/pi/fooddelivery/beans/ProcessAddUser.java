@@ -21,18 +21,20 @@ public class ProcessAddUser {
 
 	private String errorMessage;
 	
-	private User user = new User();
+	private User user;
 	
-	private Address address = new Address();
+	private Address address;
 	
 	@EJB
 	private UserService userEjb; 
 	
 	public User getUser() {
+		if(user == null) user = new User();
 		return user;
 	}
 	
 	public Address getAddress() {
+		if(address == null) address = new Address();
 		return address;
 	}
 
@@ -61,7 +63,7 @@ public class ProcessAddUser {
 			userEjb.validate(getAddress());
 			
 			getUser().setAddress(getAddress());
-			userEjb.createUser(getUser());
+			userEjb.create(getUser());
 			
 			reset();
 		} catch (EJBException e) {

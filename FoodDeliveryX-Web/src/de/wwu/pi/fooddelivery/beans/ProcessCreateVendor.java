@@ -33,7 +33,7 @@ public class ProcessCreateVendor {
 		// Action
 		try {
 			vendorEjb.validate(getVendor());
-			vendorEjb.createVendor(getVendor());
+			vendorEjb.create(getVendor());
 			
 			reset();
 		} catch (EJBException e) {

@@ -31,7 +31,7 @@ public class ProcessCreateProduct {
 
 	public void ensureInitialized() {
 		try{
-			if(vendorEjb.getVendor(vendorId) != null)
+			if(vendorEjb.get(vendorId) != null)
 				return; // Success
 		} catch(EJBException e) {
 			e.printStackTrace();
@@ -48,10 +48,10 @@ public class ProcessCreateProduct {
 	public String submit() {
 		// Action
 		try {
-			Vendor vendor = vendorEjb.getVendor(vendorId);
+			Vendor vendor = vendorEjb.get(vendorId);
 			vendor.addProduct(getProduct());
 			
-			productEjb.createProduct(product);
+			productEjb.create(product);
 			
 			reset();
 		} catch (EJBException e) {

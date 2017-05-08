@@ -45,7 +45,7 @@ public class VendorPage {
 
 	public Vendor getVendor() {
 		if(vendor == null)
-			vendor = vendorEjb.getVendor(getVendorId());
+			vendor = vendorEjb.get(getVendorId());
 		return vendor;
 	}
 	

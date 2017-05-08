@@ -1,5 +1,6 @@
 package de.wwu.pi.fooddelivery.ejb;
 
+import java.util.Collection;
 import java.util.Set;
 
 import javax.annotation.Resource;
@@ -26,13 +27,13 @@ public class ProductServiceBean implements ProductService {
     private Validator validator;
 	
 	@Override
-	public Product createProduct(Product product) {
+	public Product create(Product product) {
 		em.merge(product);
 		return product;
 	}
 
 	@Override
-	public Product getProduct(int productId) {
+	public Product get(int productId) {
 		Product product = em.find(Product.class, productId);
 
 		if (product == null)
@@ -47,4 +48,18 @@ public class ProductServiceBean implements ProductService {
 			new ConstraintViolationException(violations);
 	}
 
+	@Override
+	public Collection<Product> getAll() {
+		return em.createQuery("FROM Product", Product.class).getResultList();
+	}
+
+	@Override
+	public Product update(Product product) {
+		return em.merge(product);
+	}
+
+	@Override
+	public void delete(int id){
+		em.remove(get(id));
+	}
 }
