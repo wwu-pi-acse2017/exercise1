@@ -4,7 +4,6 @@ import javax.ejb.EJBException;
 import javax.ejb.Remote;
 import javax.validation.ConstraintViolationException;
 
-import de.wwu.pi.fooddelivery.jpa.Address;
 import de.wwu.pi.fooddelivery.jpa.User;
 
 @Remote
@@ -17,11 +16,4 @@ public interface UserService extends EntityService<User> {
 	 * @throws ConstraintViolationException (wrapped in an {@link EJBException})
 	 */
 	User createUser(String firstName, String lastName);
-	
-	/**
-	 * Validate the address entity.
-	 * @param address
-	 * @throws ConstraintViolationException
-	 */
-	void validate(Address address) throws ConstraintViolationException;
 }

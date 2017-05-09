@@ -6,6 +6,7 @@ import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
 import javax.validation.ConstraintViolationException;
 
+import de.wwu.pi.fooddelivery.ejb.AddressService;
 import de.wwu.pi.fooddelivery.ejb.UserService;
 import de.wwu.pi.fooddelivery.jpa.Address;
 import de.wwu.pi.fooddelivery.jpa.User;
@@ -27,6 +28,9 @@ public class ProcessAddUser {
 	
 	@EJB
 	private UserService userEjb; 
+	
+	@EJB
+	private AddressService addressEjb;
 	
 	public User getUser() {
 		if(user == null) user = new User();
@@ -60,7 +64,7 @@ public class ProcessAddUser {
 	public String submit_step2_createAddress() {
 		// Action
 		try {
-			userEjb.validate(getAddress());
+			addressEjb.validate(getAddress());
 			
 			getUser().setAddress(getAddress());
 			userEjb.create(getUser());
