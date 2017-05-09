@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<epc:Epc xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:epc="http://spray.eclipselabs.org/examples/Epc">
-  <nodes xsi:type="epc:Event" name="Add new user" outgoingConnectors="//@connections.0" start="true"/>
+<epc:Epc xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:epc="http://spray.eclipselabs.org/examples/Epc" name="Add user">
+  <nodes xsi:type="epc:Event" name="New user to be added" outgoingConnectors="//@connections.0" start="true"/>
   <nodes xsi:type="epc:Function" name="CREATE Enter user details" incomingConnectors="//@connections.0" outgoingConnectors="//@connections.1" annotations="//@connections.4"/>
   <nodes xsi:type="epc:Event" name="New user created" incomingConnectors="//@connections.1" outgoingConnectors="//@connections.2"/>
   <nodes xsi:type="epc:Function" name="CREATE Enter address information" incomingConnectors="//@connections.2" outgoingConnectors="//@connections.3" annotations="//@connections.5"/>
