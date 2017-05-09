@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<epc:Epc xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:epc="http://spray.eclipselabs.org/examples/Epc">
+  <nodes xsi:type="epc:Event" name="Add new user" outgoingConnectors="//@connections.0" start="true"/>
+  <nodes xsi:type="epc:Function" name="CREATE Enter user details" incomingConnectors="//@connections.0" outgoingConnectors="//@connections.1" annotations="//@connections.4"/>
+  <nodes xsi:type="epc:Event" name="New user created" incomingConnectors="//@connections.1" outgoingConnectors="//@connections.2"/>
+  <nodes xsi:type="epc:Function" name="CREATE Enter address information" incomingConnectors="//@connections.2" outgoingConnectors="//@connections.3" annotations="//@connections.5"/>
+  <nodes xsi:type="epc:Event" name="User creation completed" incomingConnectors="//@connections.3" end="true"/>
+  <nodes xsi:type="epc:InformationObject" name="User" connectors="//@connections.4"/>
+  <nodes xsi:type="epc:InformationObject" name="Address" connectors="//@connections.5"/>
+  <connections xsi:type="epc:ControlFlowConnector" name="AddNewUser_To_CreateEnterUserDetails" start="//@nodes.0" end="//@nodes.1"/>
+  <connections xsi:type="epc:ControlFlowConnector" name="CreateEnterUserDetails_To_NewUserCreated" start="//@nodes.1" end="//@nodes.2"/>
+  <connections xsi:type="epc:ControlFlowConnector" name="NewUserCreated_To_CreateEnterAddressInformation" start="//@nodes.2" end="//@nodes.3"/>
+  <connections xsi:type="epc:ControlFlowConnector" name="CreateEnterAddressInformation_To_UserCreationCompleted" start="//@nodes.3" end="//@nodes.4"/>
+  <connections xsi:type="epc:ProcessAnnotationConnector" name="User_To_CreateEnterUserDetails" start="//@nodes.5" end="//@nodes.1"/>
+  <connections xsi:type="epc:ProcessAnnotationConnector" name="Address_To_CreateEnterAddressInformation" start="//@nodes.6" end="//@nodes.3"/>
+</epc:Epc>
