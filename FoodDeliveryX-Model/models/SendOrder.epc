@@ -1,43 +1,43 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<epc:Epc xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:epc="http://spray.eclipselabs.org/examples/Epc">
-  <nodes xsi:type="epc:Event" name="New order to be added" outgoingConnectors="//@connections.0" start="true"/>
-  <nodes xsi:type="epc:Function" name="CREATE Add order details" incomingConnectors="//@connections.0" outgoingConnectors="//@connections.1" annotations="//@connections.16"/>
-  <nodes xsi:type="epc:Event" name="New order created" incomingConnectors="//@connections.1" outgoingConnectors="//@connections.2"/>
-  <nodes xsi:type="epc:Function" name="SELECT Choose a vendor" incomingConnectors="//@connections.2" outgoingConnectors="//@connections.3" annotations="//@connections.17"/>
-  <nodes xsi:type="epc:Event" name="Vendor selected" incomingConnectors="//@connections.3" outgoingConnectors="//@connections.4"/>
-  <nodes xsi:type="epc:XOR" name="ClosingXor" incomingConnectors="//@connections.4 //@connections.11" outgoingConnectors="//@connections.5"/>
-  <nodes xsi:type="epc:Function" name="ADD What would you like to order?" incomingConnectors="//@connections.5" outgoingConnectors="//@connections.6" annotations="//@connections.18"/>
-  <nodes xsi:type="epc:Event" name="Position added" incomingConnectors="//@connections.6" outgoingConnectors="//@connections.7"/>
-  <nodes xsi:type="epc:Function" name="ASK Do you need something else?" incomingConnectors="//@connections.7" outgoingConnectors="//@connections.8"/>
-  <nodes xsi:type="epc:XOR" name="OpeningXor" incomingConnectors="//@connections.8" outgoingConnectors="//@connections.9 //@connections.10"/>
-  <nodes xsi:type="epc:Event" name="Yes" incomingConnectors="//@connections.9" outgoingConnectors="//@connections.11"/>
-  <nodes xsi:type="epc:Event" name="No" incomingConnectors="//@connections.10" outgoingConnectors="//@connections.12"/>
-  <nodes xsi:type="epc:Function" name="SELECT Who are you?" incomingConnectors="//@connections.12" outgoingConnectors="//@connections.13" annotations="//@connections.19"/>
-  <nodes xsi:type="epc:Event" name="All order information added" incomingConnectors="//@connections.13" outgoingConnectors="//@connections.14"/>
-  <nodes xsi:type="epc:Function" name="SHOW Review order information" incomingConnectors="//@connections.14" outgoingConnectors="//@connections.15"/>
-  <nodes xsi:type="epc:Event" name="Order completed" incomingConnectors="//@connections.15" end="true"/>
-  <nodes xsi:type="epc:InformationObject" name="Order" connectors="//@connections.16"/>
-  <nodes xsi:type="epc:InformationObject" name="Vendor" connectors="//@connections.17"/>
-  <nodes xsi:type="epc:InformationObject" name="OrderPosition" connectors="//@connections.18"/>
-  <nodes xsi:type="epc:InformationObject" name="User" connectors="//@connections.19"/>
-  <connections xsi:type="epc:ControlFlowConnector" name="StartEvent_To_Step1" start="//@nodes.0" end="//@nodes.1"/>
-  <connections xsi:type="epc:ControlFlowConnector" name="Step1_To_Event" start="//@nodes.1" end="//@nodes.2"/>
-  <connections xsi:type="epc:ControlFlowConnector" name="Event_To_Step2" start="//@nodes.2" end="//@nodes.3"/>
-  <connections xsi:type="epc:ControlFlowConnector" name="Step2_To_Event" start="//@nodes.3" end="//@nodes.4"/>
-  <connections xsi:type="epc:ControlFlowConnector" name="Event_To_Xor" start="//@nodes.4" end="//@nodes.5"/>
-  <connections xsi:type="epc:ControlFlowConnector" name="Xor_To_Step3" start="//@nodes.4" end="//@nodes.6"/>
-  <connections xsi:type="epc:ControlFlowConnector" name="Step3_To_Event" start="//@nodes.6" end="//@nodes.7"/>
-  <connections xsi:type="epc:ControlFlowConnector" name="Event_To_Step4" start="//@nodes.7" end="//@nodes.8"/>
-  <connections xsi:type="epc:ControlFlowConnector" name="Step4_To_Xor" start="//@nodes.8" end="//@nodes.9"/>
-  <connections xsi:type="epc:ControlFlowConnector" name="Xor_To_Answer1" start="//@nodes.9" end="//@nodes.10"/>
-  <connections xsi:type="epc:ControlFlowConnector" name="Xor_To_Answer2" start="//@nodes.9" end="//@nodes.11"/>
-  <connections xsi:type="epc:ControlFlowConnector" name="Event_To_Xor" start="//@nodes.10" end="//@nodes.5"/>
-  <connections xsi:type="epc:ControlFlowConnector" name="Event_To_Step5" start="//@nodes.11" end="//@nodes.12"/>
-  <connections xsi:type="epc:ControlFlowConnector" name="Step5_To_Event" start="//@nodes.12" end="//@nodes.13"/>
-  <connections xsi:type="epc:ControlFlowConnector" name="Event_To_Step6" start="//@nodes.13" end="//@nodes.14"/>
-  <connections xsi:type="epc:ControlFlowConnector" name="Step6_To_EndEvent" start="//@nodes.14" end="//@nodes.15"/>
-  <connections xsi:type="epc:ProcessAnnotationConnector" name="OrderConnector" start="//@nodes.16" end="//@nodes.1"/>
-  <connections xsi:type="epc:ProcessAnnotationConnector" name="VendorConnector" start="//@nodes.17" end="//@nodes.3"/>
-  <connections xsi:type="epc:ProcessAnnotationConnector" name="OrderPositionConnector" start="//@nodes.18" end="//@nodes.6"/>
-  <connections xsi:type="epc:ProcessAnnotationConnector" name="UserConnector" start="//@nodes.19" end="//@nodes.12"/>
-</epc:Epc>
+<Epc:Model xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:Epc="http://pi.wwu.de/Epc">
+  <nodes xsi:type="Epc:Event" name="Add new order" outgoingConnectors="//@connections.0" start="true"/>
+  <nodes xsi:type="Epc:Function" name="CREATE Add order details" incomingConnectors="//@connections.0" outgoingConnectors="//@connections.1" annotations="//@connections.16"/>
+  <nodes xsi:type="Epc:Event" name="New order created" incomingConnectors="//@connections.1" outgoingConnectors="//@connections.2"/>
+  <nodes xsi:type="Epc:Function" name="SELECT Choose a vendor" incomingConnectors="//@connections.2" outgoingConnectors="//@connections.3" annotations="//@connections.17"/>
+  <nodes xsi:type="Epc:Event" name="Vendor selected" incomingConnectors="//@connections.3" outgoingConnectors="//@connections.4"/>
+  <nodes xsi:type="Epc:Xor" name="ClosingXor" incomingConnectors="//@connections.4 //@connections.11" outgoingConnectors="//@connections.5"/>
+  <nodes xsi:type="Epc:Function" name="ADD What would you like to order?" incomingConnectors="//@connections.5" outgoingConnectors="//@connections.6" annotations="//@connections.18"/>
+  <nodes xsi:type="Epc:Event" name="Position added" incomingConnectors="//@connections.6" outgoingConnectors="//@connections.7"/>
+  <nodes xsi:type="Epc:Function" name="ASK Do you need something else?" incomingConnectors="//@connections.7" outgoingConnectors="//@connections.8"/>
+  <nodes xsi:type="Epc:Xor" name="OpeningXor" incomingConnectors="//@connections.8" outgoingConnectors="//@connections.9 //@connections.10"/>
+  <nodes xsi:type="Epc:Event" name="Yes" incomingConnectors="//@connections.9" outgoingConnectors="//@connections.11"/>
+  <nodes xsi:type="Epc:Event" name="No" incomingConnectors="//@connections.10" outgoingConnectors="//@connections.12"/>
+  <nodes xsi:type="Epc:Function" name="SELECT Who are you?" incomingConnectors="//@connections.12" outgoingConnectors="//@connections.13" annotations="//@connections.19"/>
+  <nodes xsi:type="Epc:Event" name="All order information added" incomingConnectors="//@connections.13" outgoingConnectors="//@connections.14"/>
+  <nodes xsi:type="Epc:Function" name="SHOW Review order information" incomingConnectors="//@connections.14" outgoingConnectors="//@connections.15"/>
+  <nodes xsi:type="Epc:Event" name="Order completed" incomingConnectors="//@connections.15" end="true"/>
+  <nodes xsi:type="Epc:InformationObject" name="Order" connectors="//@connections.16"/>
+  <nodes xsi:type="Epc:InformationObject" name="Vendor" connectors="//@connections.17"/>
+  <nodes xsi:type="Epc:InformationObject" name="OrderPosition" connectors="//@connections.18"/>
+  <nodes xsi:type="Epc:InformationObject" name="User" connectors="//@connections.19"/>
+  <connections xsi:type="Epc:ControlFlowConnector" name="StartEvent_To_Step1" start="//@nodes.0" end="//@nodes.1"/>
+  <connections xsi:type="Epc:ControlFlowConnector" name="Step1_To_Event" start="//@nodes.1" end="//@nodes.2"/>
+  <connections xsi:type="Epc:ControlFlowConnector" name="Event_To_Step2" start="//@nodes.2" end="//@nodes.3"/>
+  <connections xsi:type="Epc:ControlFlowConnector" name="Step2_To_Event" start="//@nodes.3" end="//@nodes.4"/>
+  <connections xsi:type="Epc:ControlFlowConnector" name="Event_To_Xor" start="//@nodes.4" end="//@nodes.5"/>
+  <connections xsi:type="Epc:ControlFlowConnector" name="Xor_To_Step3" start="//@nodes.4" end="//@nodes.6"/>
+  <connections xsi:type="Epc:ControlFlowConnector" name="Step3_To_Event" start="//@nodes.6" end="//@nodes.7"/>
+  <connections xsi:type="Epc:ControlFlowConnector" name="Event_To_Step4" start="//@nodes.7" end="//@nodes.8"/>
+  <connections xsi:type="Epc:ControlFlowConnector" name="Step4_To_Xor" start="//@nodes.8" end="//@nodes.9"/>
+  <connections xsi:type="Epc:ControlFlowConnector" name="Xor_To_Answer1" start="//@nodes.9" end="//@nodes.10"/>
+  <connections xsi:type="Epc:ControlFlowConnector" name="Xor_To_Answer2" start="//@nodes.9" end="//@nodes.11"/>
+  <connections xsi:type="Epc:ControlFlowConnector" name="Event_To_Xor" start="//@nodes.10" end="//@nodes.5"/>
+  <connections xsi:type="Epc:ControlFlowConnector" name="Event_To_Step5" start="//@nodes.11" end="//@nodes.12"/>
+  <connections xsi:type="Epc:ControlFlowConnector" name="Step5_To_Event" start="//@nodes.12" end="//@nodes.13"/>
+  <connections xsi:type="Epc:ControlFlowConnector" name="Event_To_Step6" start="//@nodes.13" end="//@nodes.14"/>
+  <connections xsi:type="Epc:ControlFlowConnector" name="Step6_To_EndEvent" start="//@nodes.14" end="//@nodes.15"/>
+  <connections xsi:type="Epc:ProcessAnnotationConnector" name="OrderConnector" start="//@nodes.16" end="//@nodes.1"/>
+  <connections xsi:type="Epc:ProcessAnnotationConnector" name="VendorConnector" start="//@nodes.17" end="//@nodes.3"/>
+  <connections xsi:type="Epc:ProcessAnnotationConnector" name="OrderPositionConnector" start="//@nodes.18" end="//@nodes.6"/>
+  <connections xsi:type="Epc:ProcessAnnotationConnector" name="UserConnector" start="//@nodes.19" end="//@nodes.12"/>
+</Epc:Model>
