@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<Epc:Model xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:Epc="http://pi.wwu.de/Epc">
+<Epc:Model xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:Epc="http://pi.wwu.de/Epc" name="Add user">
   <nodes xsi:type="Epc:Event" name="Add new user" outgoingConnectors="//@connections.0" start="true"/>
   <nodes xsi:type="Epc:Function" name="CREATE Enter user details" incomingConnectors="//@connections.0" outgoingConnectors="//@connections.1" annotations="//@connections.4"/>
   <nodes xsi:type="Epc:Event" name="New user created" incomingConnectors="//@connections.1" outgoingConnectors="//@connections.2"/>

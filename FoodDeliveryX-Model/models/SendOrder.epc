@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<Epc:Model xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:Epc="http://pi.wwu.de/Epc">
+<Epc:Model xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:Epc="http://pi.wwu.de/Epc" name="Send order">
   <nodes xsi:type="Epc:Event" name="Add new order" outgoingConnectors="//@connections.0" start="true"/>
   <nodes xsi:type="Epc:Function" name="CREATE Add order details" incomingConnectors="//@connections.0" outgoingConnectors="//@connections.1" annotations="//@connections.16"/>
   <nodes xsi:type="Epc:Event" name="New order created" incomingConnectors="//@connections.1" outgoingConnectors="//@connections.2"/>
@@ -25,7 +25,7 @@
   <connections xsi:type="Epc:ControlFlowConnector" name="Event_To_Step2" start="//@nodes.2" end="//@nodes.3"/>
   <connections xsi:type="Epc:ControlFlowConnector" name="Step2_To_Event" start="//@nodes.3" end="//@nodes.4"/>
   <connections xsi:type="Epc:ControlFlowConnector" name="Event_To_Xor" start="//@nodes.4" end="//@nodes.5"/>
-  <connections xsi:type="Epc:ControlFlowConnector" name="Xor_To_Step3" start="//@nodes.4" end="//@nodes.6"/>
+  <connections xsi:type="Epc:ControlFlowConnector" name="Xor_To_Step3" start="//@nodes.5" end="//@nodes.6"/>
   <connections xsi:type="Epc:ControlFlowConnector" name="Step3_To_Event" start="//@nodes.6" end="//@nodes.7"/>
   <connections xsi:type="Epc:ControlFlowConnector" name="Event_To_Step4" start="//@nodes.7" end="//@nodes.8"/>
   <connections xsi:type="Epc:ControlFlowConnector" name="Step4_To_Xor" start="//@nodes.8" end="//@nodes.9"/>
