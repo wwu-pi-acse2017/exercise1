@@ -20,8 +20,7 @@ public class OrderPosition implements java.io.Serializable {
 	protected int quantity;
 	
 	@NotNull
-	@OneToOne
-	protected Product product;
+	protected String product;
 
 	public int getQuantity() {
 		return quantity;
@@ -31,16 +30,16 @@ public class OrderPosition implements java.io.Serializable {
 		this.quantity = quantity;
 	}
 
-	public Product getProduct() {
+	public String getProduct() {
 		return product;
 	}
 
-	public void setProduct(Product product) {
+	public void setProduct(String product) {
 		this.product = product;
 	}
 
 	@Override
 	public String toString() {
-		return quantity + "x " + product.toString() + " [orderPositionId=" + orderPositionId + "]";
+		return quantity + "x " + product + " [orderPositionId=" + orderPositionId + "]";
 	}
 }
