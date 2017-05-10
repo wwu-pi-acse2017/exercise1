@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<genmodel:GenModel xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore"
+    xmlns:genmodel="http://www.eclipse.org/emf/2002/GenModel" modelDirectory="/Epc/src" editDirectory="/Epc.edit/src" editorDirectory="/Epc.editor/src"
+    modelPluginID="Epc" modelName="Epc" rootExtendsClass="org.eclipse.emf.ecore.impl.MinimalEObjectImpl$Container"
+    importerID="org.eclipse.emf.importer.ecore" complianceLevel="8.0" copyrightFields="false"
+    editPluginID="Epc.edit" editorPluginID="Epc.editor" operationReflection="true"
+    importOrganizing="true">
+  <foreignModel>Epc.ecore</foreignModel>
+  <genPackages prefix="Epc" disposableProviderFactory="true" ecorePackage="Epc.ecore#/">
+    <genClasses image="false" ecoreClass="Epc.ecore#//NamedElement">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Epc.ecore#//NamedElement/name"/>
+    </genClasses>
+    <genClasses ecoreClass="Epc.ecore#//Model">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Epc.ecore#//Model/nodes"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Epc.ecore#//Model/connections"/>
+    </genClasses>
+    <genClasses image="false" ecoreClass="Epc.ecore#//Node"/>
+    <genClasses image="false" ecoreClass="Epc.ecore#//ControlFlowNode">
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference Epc.ecore#//ControlFlowNode/incomingConnectors"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference Epc.ecore#//ControlFlowNode/outgoingConnectors"/>
+    </genClasses>
+    <genClasses ecoreClass="Epc.ecore#//Event">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Epc.ecore#//Event/start"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Epc.ecore#//Event/end"/>
+    </genClasses>
+    <genClasses ecoreClass="Epc.ecore#//Function">
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference Epc.ecore#//Function/annotations"/>
+    </genClasses>
+    <genClasses image="false" ecoreClass="Epc.ecore#//LogicalOperator"/>
+    <genClasses ecoreClass="Epc.ecore#//Xor"/>
+    <genClasses ecoreClass="Epc.ecore#//And"/>
+    <genClasses ecoreClass="Epc.ecore#//Or"/>
+    <genClasses image="false" ecoreClass="Epc.ecore#//ProcessAnnotation">
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference Epc.ecore#//ProcessAnnotation/connectors"/>
+    </genClasses>
+    <genClasses ecoreClass="Epc.ecore#//InformationObject"/>
+    <genClasses ecoreClass="Epc.ecore#//OrgUnit"/>
+    <genClasses image="false" ecoreClass="Epc.ecore#//Connector"/>
+    <genClasses ecoreClass="Epc.ecore#//ControlFlowConnector">
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference Epc.ecore#//ControlFlowConnector/start"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference Epc.ecore#//ControlFlowConnector/end"/>
+    </genClasses>
+    <genClasses ecoreClass="Epc.ecore#//ProcessAnnotationConnector">
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference Epc.ecore#//ProcessAnnotationConnector/start"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference Epc.ecore#//ProcessAnnotationConnector/end"/>
+    </genClasses>
+  </genPackages>
+</genmodel:GenModel>
