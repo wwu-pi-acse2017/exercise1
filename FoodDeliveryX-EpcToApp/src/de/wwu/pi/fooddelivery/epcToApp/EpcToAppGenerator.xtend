@@ -1,9 +1,13 @@
 package de.wwu.pi.fooddelivery.epcToApp
 
+import static extension de.wwu.pi.fooddelivery.epcToApp.GeneratorUtil.*
+
 import java.io.File
 import org.eclipse.emf.ecore.resource.Resource
 import org.eclipse.xtext.generator.IFileSystemAccess
 import org.eclipse.xtext.generator.IGenerator
+import Epc.Model
+import Epc.Function
 
 class EpcToAppGenerator implements IGenerator {
 	def static isModel(Resource input) {
@@ -14,27 +18,28 @@ class EpcToAppGenerator implements IGenerator {
 		System::out.print("EpcToAppGenerator.doGenerate called with resource " + input.getURI)
 		if (isModel(input)) {
 			System::out.println(" - Generating ...")
-			input.contents.filter(typeof(Epc)).forEach[doGenerate(fsa)]
+			input.contents.filter(typeof(Model)).forEach[doGenerate(fsa)]
 		} else
 			System::out.println(" - Skipped.")
 	}
 
-	def doGenerate(Epc model, IFileSystemAccess fsa) {
-		// starting point for generator
+	def doGenerate(Model model, IFileSystemAccess fsa) {
+		// Starting point for generator
 		
 		// Generate backing bean for process
-		EpcToAppGenerator::createAndGenerateFile(fsa, model.name.toCamelCase + ".java", BackingBeanGen::generateBackingBean(model))
+		createAndGenerateFile(fsa, model.name.toCamelCase + ".java", new BackingBeanGen().generateBackingBean(model))
 		
 		// Generate views for process
-		model.nodes.filter(typeof(Function)).forEach[step | 
-			EpcToAppGenerator::createAndGenerateFile(fsa, /* ...  */ + ".xhtml", ViewGen::generateView(step))
-		]
+		model.nodes.filter(typeof(Function)).forEach[/* fsa, "some.xhtml", ViewGen::generateView(step) */]
+		
+		// Generate navigation
+		// ...
 	}
 		
 	/**
 	 * workaround to prevent "ERROR Resource.generic.XMLEncodingProvider  - Error detecting encoding"
 	 */
-	def static createAndGenerateFile(IFileSystemAccess fsa, String fileName, CharSequence contents) {
+	def createAndGenerateFile(IFileSystemAccess fsa, String fileName, CharSequence contents) {
 		var targetFile = new File("src-gen" + File.separator + fileName) //@TODO ATTENTION be careful: src-gen is specified in EpcToAppGenerator 
 		var parent = targetFile.parentFile
 		if (!parent.exists() && !parent.mkdirs()) {

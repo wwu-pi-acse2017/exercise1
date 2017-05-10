@@ -1,14 +1,16 @@
 package de.wwu.pi.fooddelivery.epcToApp
 
+import Epc.Model
+
 class BackingBeanGen {
 	
-	def generateBackingBean(Epc model){
+	def generateBackingBean(Model model){
 		// Prepare the model
 		
-		generateBeanContent(Epc model)
+		generateBeanContent(model)
 	}
 	
-	def generateBeanContent(Epc model) '''
+	def generateBeanContent(Model model) '''
 		File content
 	'''
 }

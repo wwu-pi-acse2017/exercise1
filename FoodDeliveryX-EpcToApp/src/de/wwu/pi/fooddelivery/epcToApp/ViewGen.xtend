@@ -1,12 +1,16 @@
 package de.wwu.pi.fooddelivery.epcToApp
 
-class View {
+import static extension de.wwu.pi.fooddelivery.epcToApp.GeneratorUtil.*
+
+import Epc.Function
+
+class ViewGen {
 	
 	def generateView(Function view){
-		// Prepare the model
+		// Prepare the view
 		
 		// Switch view
-		switch view.firstWord {
+		switch view.name.firstWord.toUpperCase {
 			case 'CREATE': return generateCreateContent(view)
 			// ...
 		}
