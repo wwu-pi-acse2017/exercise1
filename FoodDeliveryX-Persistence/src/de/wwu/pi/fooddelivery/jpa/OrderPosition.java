@@ -20,7 +20,7 @@ public class OrderPosition implements java.io.Serializable {
 	protected int quantity;
 	
 	@NotNull
-	@OneToOne
+	@ManyToOne
 	protected Product product;
 
 	public int getQuantity() {
