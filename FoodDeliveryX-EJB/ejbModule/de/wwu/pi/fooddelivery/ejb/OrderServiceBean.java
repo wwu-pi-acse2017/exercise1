@@ -58,7 +58,7 @@ public class OrderServiceBean implements OrderService {
 
 	@Override
 	public Collection<Order> getAll() {
-		return em.createQuery("FROM FoodOrder", Order.class).getResultList();
+		return em.createQuery("FROM Order", Order.class).getResultList();
 	}
 
 	@Override
