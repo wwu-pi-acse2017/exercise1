@@ -151,6 +151,9 @@ public class ProcessSendOrder {
 	}
 	
 	public String submit_step6_showOrder(){
+		orderEjb.create(getOrder());
+		reset();
+		
 		// Navigation
 		return "index";
 	}

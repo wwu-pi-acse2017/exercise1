@@ -8,6 +8,7 @@ import java.util.TimeZone;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -40,7 +41,7 @@ public class Order implements java.io.Serializable {
 	@Size(max=1000, message="Space for additional information is limited")
 	protected String additionalOrderInformation;
 	
-	@OneToMany
+	@OneToMany(cascade = {CascadeType.MERGE, CascadeType.PERSIST, CascadeType.REFRESH}, fetch=FetchType.EAGER)
 	protected Collection<OrderPosition> orderPositions;
 	
 	@OneToOne

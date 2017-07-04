@@ -14,9 +14,11 @@
 		<h:inputText id="quantity" value="#{processSendOrder.orderPosition.quantity}"/>
 		<h:message for="quantity"/>
 		
-		<h:outputLabel value="Product name" for="product" />
-		<h:inputText id="product" value="#{processSendOrder.orderPosition.product}"/>
-		<h:message for="product"/>
+		<h:outputLabel value="Product" for="productSelector" />
+		<h:selectOneListbox value="#{processSendOrder.orderPosition.product}" id="productSelector" required="true" rows="25" requiredMessage="Product must be selected to proceed!"  converter="#{processSendOrder.createProductConverter()}">
+    		<f:selectItems value="#{processSendOrder.vendor.products}" />
+		</h:selectOneListbox>
+		<h:message for="productSelector" styleClass="error" />
 		
 		<f:facet name="footer"><h:commandButton value="Submit" action="#{processSendOrder.submit_step3_addOrderPosition}" />
 		<h:commandButton value="Cancel" action="#{processSendOrder.cancel}" immediate="true" /></f:facet>

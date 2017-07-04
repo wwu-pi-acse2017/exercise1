@@ -1,6 +1,8 @@
 package de.wwu.pi.fooddelivery.jpa;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -31,11 +33,11 @@ public class OrderPosition implements java.io.Serializable {
 		this.quantity = quantity;
 	}
 
-	public String getProduct() {
+	public Product getProduct() {
 		return product;
 	}
 
-	public void setProduct(String product) {
+	public void setProduct(Product product) {
 		this.product = product;
 	}
 
